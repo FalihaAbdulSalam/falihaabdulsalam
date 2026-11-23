@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: #0F172A;
+    background-color: #F8FAFC;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color: #F1F5F9;
+    background-color: #090F1E;
+    color-scheme: dark;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes float-gentle-alt {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 7px, 0);
+  }
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bar-pulse {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.62);
+  }
+}
+
+@keyframes orbit-path-cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-counter-ccw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes node-breathe {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-alt {
+  animation: float-gentle-alt 7.2s ease-in-out infinite;
+}
+
+.animate-orbit-slow {
+  transform-origin: center;
+  animation: orbit-spin 28s linear infinite;
+}
+
+.animate-orbit-path {
+  animation: orbit-path-cw 24s linear infinite;
+}
+
+.animate-orbit-counter {
+  animation: orbit-counter-ccw 24s linear infinite;
+}
+
+.animate-orbit-path-reverse {
+  animation: orbit-counter-ccw 28s linear infinite;
+}
+
+.animate-orbit-counter-reverse {
+  animation: orbit-path-cw 28s linear infinite;
+}
+
+.animate-bar-equalizer {
+  transform-origin: bottom;
+  animation: bar-pulse 1.8s ease-in-out infinite;
+}
+
+.animate-node-breathe {
+  animation: node-breathe 3.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float-slow,
+  .animate-float-alt,
+  .animate-orbit-slow,
+  .animate-orbit-path,
+  .animate-orbit-counter,
+  .animate-orbit-path-reverse,
+  .animate-orbit-counter-reverse,
+  .animate-bar-equalizer,
+  .animate-node-breathe {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
