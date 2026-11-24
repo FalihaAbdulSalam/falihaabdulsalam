@@ -13,6 +13,7 @@ import {
   FILTER_OPTIONS,
   filterAndSortProjects,
   getCategoryCounts,
+  getSideSlideOffset,
   type FilterOption,
   type SortOption,
 } from '../utils/portfolio';
@@ -248,13 +249,16 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                   !searchQuery.trim() &&
                   sortBy === 'featured';
                 const accent = CATEGORY_ACCENT[project.category];
+                const slideFromX = getSideSlideOffset(idx, 64);
 
                 return (
                   <motion.article
                     key={project.id}
                     layout
-                    initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    data-slide-direction={slideFromX < 0 ? 'left' : 'right'}
+                    initial={{ opacity: 0, x: slideFromX, scale: 0.98 }}
+                    whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                    viewport={{ once: true, amount: 0.1 }}
                     exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.16 } }}
                     whileHover={{
                       y: -6,
@@ -266,8 +270,8 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                       transition: { duration: 0.1 },
                     }}
                     transition={{
-                      duration: 0.35,
-                      delay: Math.min((idx % 3) * 0.05, 0.15),
+                      duration: 0.52,
+                      delay: Math.min((idx % 2) * 0.07, 0.14),
                       ease: [0.16, 1, 0.3, 1],
                     }}
                     className={`group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-700/80 ${accent.cardBg} shadow-sm transition-[box-shadow,border-color] duration-200 ${accent.hoverShadow} ${accent.hoverBorder} ${
@@ -367,14 +371,14 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
         )}
 
         {/* Public GitHub Repositories & Additional Infrastructure */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 grid grid-cols-1 gap-8 border-t border-slate-200 pt-12 lg:grid-cols-12 dark:border-slate-700/70"
-        >
-          <div className="lg:col-span-5">
+        <div className="mt-14 grid grid-cols-1 gap-8 border-t border-slate-200 pt-12 lg:grid-cols-12 dark:border-slate-700/70">
+          <motion.div
+            initial={{ opacity: 0, x: -48 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.12 }}
+            transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5"
+          >
             <h3 className="font-display text-xl font-bold tracking-tight text-slate-950 dark:text-white">
               Public GitHub Repositories &amp; Additional Systems
             </h3>
@@ -422,9 +426,15 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: 48 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.12 }}
+            transition={{ duration: 0.52, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7"
+          >
             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700/80 dark:bg-[#0F172A]/95">
               <div className="h-1.5 w-full bg-gradient-to-r from-[#2563EB] via-[#0D9488] to-[#7C3AED]" aria-hidden="true" />
               <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50/70 px-5 py-4 text-slate-900 dark:border-slate-800 dark:bg-slate-800/70 dark:text-white">
@@ -483,8 +493,8 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 ))}
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

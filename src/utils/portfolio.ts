@@ -195,4 +195,71 @@ export function formatMetricValue(current: number, parsed: ParsedMetric): string
   return `${formattedNumber}${parsed.suffix}`;
 }
 
+export function getSideSlideOffset(index: number, distance = 56): number {
+  const safeDistance = Math.abs(Number.isFinite(distance) ? distance : 56);
+  return index % 2 === 0 ? -safeDistance : safeDistance;
+}
 
+export interface ContactEmailPayload {
+  name: string;
+  email: string;
+  _replyto: string;
+  _subject: string;
+  message: string;
+  _template: 'table';
+  _captcha: 'false';
+  _honey: string;
+}
+
+export function buildContactEmailEndpoint(toEmail: string): string {
+  return `https://formsubmit.co/ajax/${encodeURIComponent(toEmail.trim())}`;
+}
+
+export function buildContactEmailPayload(input: ContactFormInput): ContactEmailPayload {
+  const trimmedEmail = input.email.trim();
+  const trimmedSubject = input.subject.trim();
+  return {
+    name: input.name.trim(),
+    email: trimmedEmail,
+    _replyto: trimmedEmail,
+    _subject: `[Portfolio Inquiry] ${trimmedSubject}`,
+    message: input.message.trim(),
+    _template: 'table',
+    _captcha: 'false',
+    _honey: '',
+  };
+}
+
+export interface ContactSendOutcome {
+  status: 'sent' | 'needs-activation' | 'error';
+  message: string;
+}
+
+export function parseContactSendResponse(ok: boolean, data: unknown): ContactSendOutcome {
+  const record =
+    data && typeof data === 'object' ? (data as Record<string, unknown>) : null;
+  const rawMessage = typeof record?.message === 'string' ? record.message : '';
+  const successFlag = record?.success === true || record?.success === 'true';
+
+  if (ok && successFlag) {
+    return {
+      status: 'sent',
+      message: 'Message sent successfully!',
+    };
+  }
+
+  if (/activat/i.test(rawMessage)) {
+    return {
+      status: 'needs-activation',
+      message:
+        'A one-time activation email was just sent to confirm form delivery. Please check the inbox and click Activate Form, or use the email app link below.',
+    };
+  }
+
+  return {
+    status: 'error',
+    message:
+      rawMessage ||
+      'Unable to send right now. Please try again or use your email app below.',
+  };
+}

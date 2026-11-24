@@ -1,8 +1,31 @@
 import { useState, type FormEvent } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { Check, Code2, Copy, Database, ExternalLink, Github, Layers, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
+import {
+  AlertCircle,
+  Check,
+  CheckCircle2,
+  Code2,
+  Copy,
+  Database,
+  ExternalLink,
+  Github,
+  Layers,
+  Linkedin,
+  Loader2,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+} from 'lucide-react';
 import { PROFILE, SKILL_GROUPS } from '../data/portfolioData';
-import { buildMailtoHref, validateContactForm, type ContactFormInput } from '../utils/portfolio';
+import {
+  buildContactEmailEndpoint,
+  buildContactEmailPayload,
+  buildMailtoHref,
+  parseContactSendResponse,
+  validateContactForm,
+  type ContactFormInput,
+} from '../utils/portfolio';
 import {
   CapabilitiesArchitectureIllustration,
   ContactDispatchIllustration,
@@ -41,7 +64,10 @@ export function CapabilitiesAndContact() {
     message: '',
   });
   const [formErrors, setFormErrors] = useState<Partial<Record<keyof ContactFormInput, string>>>({});
-  const [submittedHref, setSubmittedHref] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState('');
+  const [sendStatus, setSendStatus] = useState<'idle' | 'sending' | 'sent' | 'needs-activation' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState<string>('');
+  const [fallbackMailtoHref, setFallbackMailtoHref] = useState<string | null>(null);
 
   const handleCopy = async (text: string, field: 'email' | 'phone') => {
     try {
@@ -53,18 +79,60 @@ export function CapabilitiesAndContact() {
     window.setTimeout(() => setCopiedField(null), 2000);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (honeypot.trim().length > 0) {
+      return;
+    }
+
     const validation = validateContactForm(formState);
     if (!validation.valid) {
       setFormErrors(validation.errors);
-      setSubmittedHref(null);
+      setSendStatus('idle');
+      setStatusMessage('');
       return;
     }
 
     setFormErrors({});
-    const href = buildMailtoHref(PROFILE.email, formState);
-    setSubmittedHref(href);
+    setSendStatus('sending');
+    setStatusMessage('');
+    const mailtoHref = buildMailtoHref(PROFILE.email, formState);
+    setFallbackMailtoHref(mailtoHref);
+
+    try {
+      const response = await fetch(buildContactEmailEndpoint(PROFILE.email), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(buildContactEmailPayload(formState)),
+      });
+
+      let responseData: unknown = null;
+      try {
+        responseData = await response.json();
+      } catch {
+        responseData = null;
+      }
+
+      const outcome = parseContactSendResponse(response.ok, responseData);
+      setSendStatus(outcome.status);
+      setStatusMessage(
+        outcome.status === 'sent'
+          ? `Message sent to ${PROFILE.email}! Thanks for reaching out, ${formState.name.trim()}.`
+          : outcome.message,
+      );
+
+      if (outcome.status === 'sent') {
+        setFormState({ name: '', email: '', subject: '', message: '' });
+      }
+    } catch {
+      setSendStatus('error');
+      setStatusMessage(
+        'Could not reach the mail service right now. You can retry or open your email app below.',
+      );
+    }
   };
 
   return (
@@ -113,14 +181,16 @@ export function CapabilitiesAndContact() {
             {SKILL_GROUPS.map((group, idx) => {
               const style = CAPABILITY_STYLES[idx % CAPABILITY_STYLES.length];
               const Icon = style.Icon;
+              const initialOffset =
+                idx === 0 ? { opacity: 0, x: -56 } : idx === 2 ? { opacity: 0, x: 56 } : { opacity: 0, y: 28 };
               return (
                 <motion.div
                   key={group.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={initialOffset}
+                  whileInView={{ opacity: 1, x: 0, y: 0 }}
                   viewport={{ once: true, amount: 0.15 }}
                   whileHover={{ y: -5, transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] } }}
-                  transition={{ duration: 0.4, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.52, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
                   className={`group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-700/80 ${style.cardBg} shadow-sm transition-[box-shadow,border-color] duration-200 hover:shadow-lg ${style.hoverBorder}`}
                 >
                   <div className={`h-1.5 w-full ${style.topBar}`} aria-hidden="true" />
@@ -170,10 +240,10 @@ export function CapabilitiesAndContact() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             {/* Direct Contact Channels */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, x: -52 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5"
             >
               <p className="inline-flex items-center gap-2.5 text-xs font-semibold tracking-wide text-[#C2410C] dark:text-amber-400">
@@ -281,10 +351,10 @@ export function CapabilitiesAndContact() {
 
             {/* Interactive Inquiry Form */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, x: 52 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.52, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7"
             >
               <form
@@ -294,11 +364,21 @@ export function CapabilitiesAndContact() {
               >
                 <div className="h-1.5 w-full bg-gradient-to-r from-[#2563EB] via-[#0D9488] to-[#EA580C]" aria-hidden="true" />
                 <div className="p-6 sm:p-8">
-                  <h3 className="font-display text-xl font-bold text-slate-950 dark:text-white">Send a Direct Inquiry</h3>
+                  <h3 className="font-display text-xl font-bold text-slate-950 dark:text-white">Send a Direct Message</h3>
                   <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    Compose an opportunity or project brief to prepare a direct email to{' '}
-                    {PROFILE.email}.
+                    Messages submitted here are sent directly to{' '}
+                    <span className="font-medium text-slate-700 dark:text-slate-200">{PROFILE.email}</span>.
                   </p>
+                  <input
+                    type="text"
+                    name="_honey"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="hidden"
+                  />
 
                   <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
@@ -378,37 +458,94 @@ export function CapabilitiesAndContact() {
                     )}
                   </div>
 
-                  <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
-                    <motion.button
-                      type="submit"
-                      whileHover={{ y: -1 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#2563EB] to-[#4F46E5] px-5 py-2.5 text-sm font-semibold text-white shadow-xs transition-all hover:from-[#1D4ED8] hover:to-[#4338CA] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#0F172A]"
-                    >
-                      <Send className="h-4 w-4" aria-hidden="true" />
-                      <span>Prepare Inquiry</span>
-                    </motion.button>
+                  <div className="mt-5 flex flex-col gap-3">
+                    <div className="flex flex-wrap items-center gap-4">
+                      <motion.button
+                        type="submit"
+                        disabled={sendStatus === 'sending'}
+                        whileHover={sendStatus === 'sending' ? undefined : { y: -1 }}
+                        whileTap={sendStatus === 'sending' ? undefined : { scale: 0.98 }}
+                        className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#2563EB] to-[#4F46E5] px-5 py-2.5 text-sm font-semibold text-white shadow-xs transition-all hover:from-[#1D4ED8] hover:to-[#4338CA] hover:shadow-md disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#0F172A]"
+                      >
+                        {sendStatus === 'sending' ? (
+                          <>
+                            <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                            <span>Sending...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Send className="h-4 w-4" aria-hidden="true" />
+                            <span>Send Message</span>
+                          </>
+                        )}
+                      </motion.button>
+                    </div>
 
-                    <AnimatePresence>
-                      {submittedHref && (
+                    <AnimatePresence mode="wait">
+                      {sendStatus === 'sent' && (
                         <motion.div
+                          key="sent"
                           initial={{ opacity: 0, y: 6 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -4 }}
                           transition={{ duration: 0.2 }}
-                          data-testid="inquiry-ready"
-                          className="flex flex-wrap items-center gap-3 text-xs text-slate-700 dark:text-slate-300"
+                          role="status"
+                          data-testid="contact-sent"
+                          className="flex items-start gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50/90 px-3.5 py-2.5 text-xs text-emerald-900 dark:border-emerald-800/80 dark:bg-emerald-950/60 dark:text-emerald-200"
                         >
-                          <span className="font-medium text-emerald-700 dark:text-emerald-400">
-                            Inquiry ready for {formState.name}.
-                          </span>
-                          <a
-                            href={submittedHref}
-                            className="inline-flex items-center gap-1 font-semibold text-[#1D4ED8] underline underline-offset-2 dark:text-sky-400"
-                          >
-                            <span>Open Email Client</span>
-                            <ExternalLink className="h-3 w-3" aria-hidden="true" />
-                          </a>
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                          <span>{statusMessage}</span>
+                        </motion.div>
+                      )}
+
+                      {sendStatus === 'needs-activation' && (
+                        <motion.div
+                          key="activation"
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -4 }}
+                          transition={{ duration: 0.2 }}
+                          role="status"
+                          data-testid="contact-activation"
+                          className="flex flex-col gap-2 rounded-xl border border-amber-200 bg-amber-50/90 px-3.5 py-2.5 text-xs text-amber-950 dark:border-amber-800/80 dark:bg-amber-950/60 dark:text-amber-200"
+                        >
+                          <span>{statusMessage}</span>
+                          {fallbackMailtoHref && (
+                            <a
+                              href={fallbackMailtoHref}
+                              className="inline-flex w-fit items-center gap-1 font-semibold text-[#1D4ED8] underline underline-offset-2 dark:text-sky-400"
+                            >
+                              <span>Open Email App</span>
+                              <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                            </a>
+                          )}
+                        </motion.div>
+                      )}
+
+                      {sendStatus === 'error' && (
+                        <motion.div
+                          key="error"
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -4 }}
+                          transition={{ duration: 0.2 }}
+                          role="alert"
+                          data-testid="contact-error"
+                          className="flex flex-col gap-2 rounded-xl border border-red-200 bg-red-50/90 px-3.5 py-2.5 text-xs text-red-900 dark:border-red-900/80 dark:bg-red-950/60 dark:text-red-200"
+                        >
+                          <div className="flex items-start gap-2">
+                            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true" />
+                            <span>{statusMessage}</span>
+                          </div>
+                          {fallbackMailtoHref && (
+                            <a
+                              href={fallbackMailtoHref}
+                              className="inline-flex w-fit items-center gap-1 font-semibold text-[#1D4ED8] underline underline-offset-2 dark:text-sky-400"
+                            >
+                              <span>Send via Email App</span>
+                              <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                            </a>
+                          )}
                         </motion.div>
                       )}
                     </AnimatePresence>

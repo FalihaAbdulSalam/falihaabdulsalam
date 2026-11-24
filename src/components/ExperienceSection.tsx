@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { EDUCATION, EXPERIENCES } from '../data/portfolioData';
+import { getSideSlideOffset } from '../utils/portfolio';
 import { ExperienceRoadmapVector } from './VectorIllustrations';
 
 const ROLE_STYLES = [
@@ -110,11 +111,12 @@ export function ExperienceSection() {
                   />
 
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.15 }}
+                    data-slide-direction={getSideSlideOffset(idx, 56) < 0 ? 'left' : 'right'}
+                    initial={{ opacity: 0, x: getSideSlideOffset(idx, 56) }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.12 }}
                     whileHover={{ y: -3, transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] } }}
-                    transition={{ duration: 0.4, delay: Math.min(idx * 0.06, 0.2), ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.52, delay: Math.min((idx % 2) * 0.06, 0.12), ease: [0.16, 1, 0.3, 1] }}
                     className={`overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-700/80 ${style.card} shadow-sm transition-shadow duration-200 hover:shadow-md dark:hover:shadow-[0_16px_32px_-12px_rgba(2,6,23,0.65)]`}
                   >
                     <div className={`h-1 w-full ${style.bar}`} aria-hidden="true" />
@@ -168,11 +170,12 @@ export function ExperienceSection() {
                 className="absolute -left-[34px] top-8 hidden h-3.5 w-3.5 rounded-full bg-[#4F46E5] ring-4 ring-indigo-200 md:block dark:bg-indigo-400 dark:ring-indigo-900/80"
               />
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
+                data-slide-direction={getSideSlideOffset(EXPERIENCES.length, 56) < 0 ? 'left' : 'right'}
+                initial={{ opacity: 0, x: getSideSlideOffset(EXPERIENCES.length, 56) }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.12 }}
                 whileHover={{ y: -3, transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] } }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
                 className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md dark:border-slate-700/80 dark:bg-[#0F172A]/95 dark:hover:shadow-[0_16px_32px_-12px_rgba(2,6,23,0.65)]"
               >
                 <div className="h-1 w-full bg-gradient-to-r from-[#4F46E5] via-[#7C3AED] to-[#EC4899]" aria-hidden="true" />

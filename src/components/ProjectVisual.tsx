@@ -413,10 +413,10 @@ export function ProjectVisual({ visualType, compact = false }: ProjectVisualProp
           <div className="relative z-10 flex flex-1 flex-col justify-between gap-3 bg-gradient-to-br from-[#F8FAFC] via-[#FFFFFF] to-[#FFFBEB] p-3.5 sm:p-4 text-slate-800 dark:from-[#0F172A] dark:via-[#1C1A2F] dark:to-[#451A03]/65 dark:text-slate-100">
             <div className="flex items-center justify-between gap-2 text-[11px] font-mono">
               <span className="min-w-0 truncate font-semibold text-[#C2410C] dark:text-amber-400">
-                {visualType === 'claude-ai' ? 'CLAUDE TYPESCRIPT' : 'IBM CARBON UI'}
+                {visualType === 'claude-ai' ? 'CLAUDE CLONE' : 'IBM CARBON UI'}
               </span>
               <span className="shrink-0 rounded border border-amber-200 bg-amber-50 px-2 py-0.5 font-semibold text-[#B45309] dark:border-amber-800/80 dark:bg-amber-950/80 dark:text-amber-300">
-                {visualType === 'claude-ai' ? 'AI WORKFLOW' : 'VERCEL LIVE'}
+                {visualType === 'claude-ai' ? 'LIVE APP' : 'VERCEL LIVE'}
               </span>
             </div>
             <div className="grid grid-cols-3 gap-2">
@@ -428,8 +428,10 @@ export function ProjectVisual({ visualType, compact = false }: ProjectVisualProp
               ))}
             </div>
             <div className="flex items-center justify-between gap-2 border-t border-slate-200/80 pt-2 text-[11px] text-slate-500 dark:border-slate-700/80 dark:text-slate-400">
-              <span className="min-w-0 truncate">Public Repository</span>
-              <span className="shrink-0 font-mono font-semibold text-[#C2410C] dark:text-amber-400">FalihaAbdulSalam</span>
+              <span className="min-w-0 truncate">{visualType === 'claude-ai' ? 'AI Chat Workspace' : 'Public Repository'}</span>
+              <span className="shrink-0 font-mono font-semibold text-[#C2410C] dark:text-amber-400">
+                {visualType === 'claude-ai' ? 'claudeclone.ai.studio' : 'FalihaAbdulSalam'}
+              </span>
             </div>
           </div>
         )}

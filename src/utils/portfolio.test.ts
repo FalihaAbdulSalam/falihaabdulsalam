@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ADDITIONAL_PROJECT_GROUPS, PROFILE, PROJECTS } from '../data/portfolioData';
+import { ADDITIONAL_PROJECT_GROUPS, PROFILE, PROJECTS, PUBLIC_GITHUB_REPOS } from '../data/portfolioData';
 import {
+  buildContactEmailEndpoint,
+  buildContactEmailPayload,
   buildMailtoHref,
   calculateScrollProgress,
   filterAndSortProjects,
@@ -9,6 +11,8 @@ import {
   getActiveSectionId,
   getCategoryCounts,
   getNextTheme,
+  getSideSlideOffset,
+  parseContactSendResponse,
   parseMetricValue,
   resolveTheme,
   THEME_STORAGE_KEY,
@@ -176,4 +180,54 @@ test('parseMetricValue and formatMetricValue preserve commas and suffixes accura
   assert.equal(formatMetricValue(-5, modules), '0+');
 });
 
+test('getSideSlideOffset alternates left and right horizontal offsets cleanly', () => {
+  assert.equal(getSideSlideOffset(0, 64), -64);
+  assert.equal(getSideSlideOffset(1, 64), 64);
+  assert.equal(getSideSlideOffset(2, 64), -64);
+  assert.equal(getSideSlideOffset(3, -40), 40);
+  assert.equal(getSideSlideOffset(0), -56);
+});
 
+test('Claude Clone project and public repo link directly to https://claudeclone.ai.studio/', () => {
+  const claudeProject = PROJECTS.find((p) => p.id === 'claude-ai-app');
+  assert.ok(claudeProject);
+  assert.equal(claudeProject.liveUrl, 'https://claudeclone.ai.studio/');
+  assert.equal(claudeProject.liveLabel, 'claudeclone.ai.studio');
+
+  const claudeRepo = PUBLIC_GITHUB_REPOS.find((r) => r.name === 'Claude');
+  assert.ok(claudeRepo);
+  assert.equal(claudeRepo.liveUrl, 'https://claudeclone.ai.studio/');
+});
+
+test('buildContactEmailEndpoint and buildContactEmailPayload target falihaabdulsalam@gmail.com', () => {
+  const endpoint = buildContactEmailEndpoint(PROFILE.email);
+  assert.equal(endpoint, 'https://formsubmit.co/ajax/falihaabdulsalam%40gmail.com');
+
+  const payload = buildContactEmailPayload({
+    name: '  Aarav  ',
+    email: ' aarav@example.com ',
+    subject: ' Frontend Role ',
+    message: '  Interested in discussing a React role.  ',
+  });
+  assert.equal(payload.name, 'Aarav');
+  assert.equal(payload.email, 'aarav@example.com');
+  assert.equal(payload._replyto, 'aarav@example.com');
+  assert.equal(payload._subject, '[Portfolio Inquiry] Frontend Role');
+  assert.equal(payload.message, 'Interested in discussing a React role.');
+  assert.equal(payload._template, 'table');
+  assert.equal(payload._captcha, 'false');
+});
+
+test('parseContactSendResponse distinguishes sent, needs-activation, and error states', () => {
+  assert.equal(parseContactSendResponse(true, { success: 'true', message: 'The form was submitted successfully.' }).status, 'sent');
+  assert.equal(parseContactSendResponse(true, { success: true }).status, 'sent');
+  assert.equal(
+    parseContactSendResponse(true, {
+      success: 'false',
+      message: 'This form needs Activation. We sent you an email.',
+    }).status,
+    'needs-activation',
+  );
+  assert.equal(parseContactSendResponse(false, { message: 'Server error' }).status, 'error');
+  assert.equal(parseContactSendResponse(false, null).status, 'error');
+});
