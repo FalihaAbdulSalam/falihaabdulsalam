@@ -96,7 +96,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             aria-hidden="true"
             className="flex h-8 w-8 items-center justify-center rounded-lg bg-[linear-gradient(135deg,#2563EB_0%,#7C3AED_55%,#0D9488_100%)] font-display text-xs font-bold tracking-tight text-white shadow-xs transition-transform duration-150 group-hover:scale-105"
           >
-            FA
+            FAS
           </span>
           <span className="font-display text-[17px] font-bold tracking-tight text-slate-950 transition-colors group-hover:text-[#1D4ED8] dark:text-white dark:group-hover:text-sky-400">
             {PROFILE.name}
