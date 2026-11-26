@@ -86,10 +86,13 @@ export const PROFILE = {
 };
 
 /**
- * Public Formspree form endpoint (https://formspree.io/f/<form-id>).
- * Set VITE_CONTACT_FORM_ENDPOINT at build time to override without a code change.
+ * Contact endpoint the form posts to: the PHP handler in api/contact.php, which
+ * ships with this site and runs as a Vercel Function (see vercel.json).
+ * A Formspree URL (https://formspree.io/f/<form-id>) or any other PHP handler
+ * URL also works. Set VITE_CONTACT_FORM_ENDPOINT at build time to override
+ * without a code change.
  */
-export const CONTACT_FORM_ENDPOINT = '';
+export const CONTACT_FORM_ENDPOINT = '/api/contact.php';
 
 export const KEY_METRICS = [
   {

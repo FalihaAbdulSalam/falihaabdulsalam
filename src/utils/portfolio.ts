@@ -211,12 +211,18 @@ export interface ContactFormPayload {
 }
 
 const FORMSPREE_ENDPOINT_PATTERN = /^https:\/\/(?:www\.)?formspree\.io\/f\/[A-Za-z0-9]+$/;
+// A self-hosted PHP handler: either an absolute https URL (php/contact.php
+// uploaded to a PHP host) or a same-origin path such as /contact.php.
+const PHP_ENDPOINT_PATTERN = /^(?:https:\/\/[^\s"'<>]+|\/[\w\-./]*)\.php$/i;
 
 export function resolveContactFormEndpoint(
   configured: string | null | undefined,
 ): string | null {
   const trimmed = (configured ?? '').trim();
-  return FORMSPREE_ENDPOINT_PATTERN.test(trimmed) ? trimmed : null;
+  if (FORMSPREE_ENDPOINT_PATTERN.test(trimmed)) {
+    return trimmed;
+  }
+  return PHP_ENDPOINT_PATTERN.test(trimmed) ? trimmed : null;
 }
 
 export function buildContactFormPayload(input: ContactFormInput): ContactFormPayload {

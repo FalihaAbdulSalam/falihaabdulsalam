@@ -55,11 +55,16 @@ const CAPABILITY_STYLES = [
   },
 ];
 
-// Formspree form endpoint (https://formspree.io/f/<form-id>), from the build env or
-// the checked-in fallback. Without one, the form falls back to a prefilled mail draft.
-const CONTACT_ENDPOINT = resolveContactFormEndpoint(
+// The PHP handler that ships with the site (api/contact.php), or a configured
+// Formspree/PHP URL from the build env. `vite dev` has no PHP runtime, so a
+// same-origin handler falls back to the prefilled mail draft locally.
+const resolvedContactEndpoint = resolveContactFormEndpoint(
   import.meta.env.VITE_CONTACT_FORM_ENDPOINT ?? CONTACT_FORM_ENDPOINT,
 );
+const CONTACT_ENDPOINT =
+  import.meta.env.DEV && resolvedContactEndpoint?.startsWith('/')
+    ? null
+    : resolvedContactEndpoint;
 
 export function CapabilitiesAndContact() {
   const [copiedField, setCopiedField] = useState<'email' | 'phone' | null>(null);

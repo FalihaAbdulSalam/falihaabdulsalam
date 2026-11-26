@@ -199,7 +199,7 @@ test('Claude Clone project and public repo link directly to https://claudeclone.
   assert.equal(claudeRepo.liveUrl, 'https://claudeclone.ai.studio/');
 });
 
-test('resolveContactFormEndpoint accepts only a Formspree form endpoint', () => {
+test('resolveContactFormEndpoint accepts Formspree form and PHP handler endpoints', () => {
   assert.equal(
     resolveContactFormEndpoint('https://formspree.io/f/mzzbqkda'),
     'https://formspree.io/f/mzzbqkda',
@@ -208,6 +208,11 @@ test('resolveContactFormEndpoint accepts only a Formspree form endpoint', () => 
     resolveContactFormEndpoint('  https://www.formspree.io/f/abc123  '),
     'https://www.formspree.io/f/abc123',
   );
+  assert.equal(
+    resolveContactFormEndpoint('https://faliha.example.in/contact.php'),
+    'https://faliha.example.in/contact.php',
+  );
+  assert.equal(resolveContactFormEndpoint('/contact.php'), '/contact.php');
   assert.equal(resolveContactFormEndpoint(''), null);
   assert.equal(resolveContactFormEndpoint(undefined), null);
   assert.equal(
@@ -215,6 +220,9 @@ test('resolveContactFormEndpoint accepts only a Formspree form endpoint', () => 
     null,
   );
   assert.equal(resolveContactFormEndpoint('http://formspree.io/f/abc123'), null);
+  assert.equal(resolveContactFormEndpoint('http://faliha.example.in/contact.php'), null);
+  assert.equal(resolveContactFormEndpoint('https://faliha.example.in/contact.PHP'),
+    'https://faliha.example.in/contact.PHP');
 });
 
 test('buildContactFormPayload trims fields and tags the portfolio inbox subject', () => {

@@ -143,14 +143,18 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
             className="flex flex-col justify-between lg:col-span-7"
           >
             <div>
-              <p className="text-sm font-semibold text-[#1D4ED8] dark:text-sky-400">
-                {PROFILE.shortTitle}{' '}
-                <span aria-hidden="true" className="text-slate-400 dark:text-slate-500">·</span>{' '}
-                <span className="font-medium text-[#0D9488] dark:text-teal-300">{PROFILE.location}</span>
-              </p>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#2563EB]/25 bg-white/75 px-3 py-1 text-xs font-semibold text-[#1D4ED8] shadow-xs backdrop-blur-sm dark:border-sky-400/30 dark:bg-slate-900/60 dark:text-sky-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#0D9488] dark:bg-teal-400" aria-hidden="true" />
+                  {PROFILE.shortTitle}
+                </span>
+                <span className="text-xs font-semibold tracking-wide text-slate-700 dark:text-slate-300">
+                  {PROFILE.location}
+                </span>
+              </div>
 
               <h1
-                className="font-display mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-[3.2rem] lg:leading-[1.08] dark:text-white"
+                className="font-display mt-4 text-[2.05rem] font-bold leading-[1.12] tracking-tight text-slate-950 sm:text-[2.55rem] sm:leading-[1.1] lg:text-[3rem] lg:leading-[1.08] dark:text-white"
                 style={{ textWrap: 'balance' }}
               >
                 Front-end and React Native engineer with{' '}
@@ -161,7 +165,7 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
               </h1>
 
               <div className="mt-5 grid grid-cols-1 items-center gap-5 sm:grid-cols-12">
-                <p className="text-base leading-relaxed text-slate-700 sm:col-span-6 sm:text-[16px] dark:text-slate-300">
+                <p className="max-w-[54ch] text-[15px] leading-relaxed text-slate-600 sm:col-span-6 sm:text-base dark:text-slate-300">
                   {PROFILE.bio}
                 </p>
                 <motion.div
