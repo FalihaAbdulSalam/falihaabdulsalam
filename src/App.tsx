@@ -21,6 +21,9 @@ import {
 } from './utils/portfolio';
 
 function getInitialTheme(): ThemeMode {
+  if (typeof window === 'undefined') {
+    return 'light';
+  }
   try {
     return resolveTheme(window.localStorage.getItem(THEME_STORAGE_KEY));
   } catch {

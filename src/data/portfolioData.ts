@@ -75,7 +75,7 @@ export const PROFILE = {
   location: 'Thiruvalla, Kerala, India',
   email: 'falihaabdulsalam@gmail.com',
   phone: '+91 9544786917',
-  resumeUrl: '/assets/aistudio/Faliha_Abdul_Salam__1__3496f13e.pdf',
+  resumeUrl: '/resume/Faliha-Abdul-Salam-Frontend-Engineer-Resume.pdf',
   linkedinUrl: 'https://www.linkedin.com/in/faliha-abdul-salam/',
   linkedinHandle: 'faliha-abdul-salam',
   githubPrimaryUrl: 'https://github.com/FalihaAbdulSalam',
