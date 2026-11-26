@@ -2,8 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ADDITIONAL_PROJECT_GROUPS, PROFILE, PROJECTS, PUBLIC_GITHUB_REPOS } from '../data/portfolioData';
 import {
-  buildContactEmailEndpoint,
-  buildContactEmailPayload,
+  buildContactFormPayload,
   buildMailtoHref,
   calculateScrollProgress,
   filterAndSortProjects,
@@ -14,6 +13,7 @@ import {
   getSideSlideOffset,
   parseContactSendResponse,
   parseMetricValue,
+  resolveContactFormEndpoint,
   resolveTheme,
   THEME_STORAGE_KEY,
   validateContactForm,
@@ -199,11 +199,26 @@ test('Claude Clone project and public repo link directly to https://claudeclone.
   assert.equal(claudeRepo.liveUrl, 'https://claudeclone.ai.studio/');
 });
 
-test('buildContactEmailEndpoint and buildContactEmailPayload target falihaabdulsalam@gmail.com', () => {
-  const endpoint = buildContactEmailEndpoint(PROFILE.email);
-  assert.equal(endpoint, 'https://formsubmit.co/ajax/falihaabdulsalam%40gmail.com');
+test('resolveContactFormEndpoint accepts only a Formspree form endpoint', () => {
+  assert.equal(
+    resolveContactFormEndpoint('https://formspree.io/f/mzzbqkda'),
+    'https://formspree.io/f/mzzbqkda',
+  );
+  assert.equal(
+    resolveContactFormEndpoint('  https://www.formspree.io/f/abc123  '),
+    'https://www.formspree.io/f/abc123',
+  );
+  assert.equal(resolveContactFormEndpoint(''), null);
+  assert.equal(resolveContactFormEndpoint(undefined), null);
+  assert.equal(
+    resolveContactFormEndpoint('https://formsubmit.co/ajax/falihaabdulsalam%40gmail.com'),
+    null,
+  );
+  assert.equal(resolveContactFormEndpoint('http://formspree.io/f/abc123'), null);
+});
 
-  const payload = buildContactEmailPayload({
+test('buildContactFormPayload trims fields and tags the portfolio inbox subject', () => {
+  const payload = buildContactFormPayload({
     name: '  Aarav  ',
     email: ' aarav@example.com ',
     subject: ' Frontend Role ',
@@ -212,22 +227,24 @@ test('buildContactEmailEndpoint and buildContactEmailPayload target falihaabduls
   assert.equal(payload.name, 'Aarav');
   assert.equal(payload.email, 'aarav@example.com');
   assert.equal(payload._replyto, 'aarav@example.com');
+  assert.equal(payload.subject, 'Frontend Role');
   assert.equal(payload._subject, '[Portfolio Inquiry] Frontend Role');
   assert.equal(payload.message, 'Interested in discussing a React role.');
-  assert.equal(payload._template, 'table');
-  assert.equal(payload._captcha, 'false');
+  assert.equal(payload._gotcha, '');
 });
 
-test('parseContactSendResponse distinguishes sent, needs-activation, and error states', () => {
-  assert.equal(parseContactSendResponse(true, { success: 'true', message: 'The form was submitted successfully.' }).status, 'sent');
-  assert.equal(parseContactSendResponse(true, { success: true }).status, 'sent');
-  assert.equal(
-    parseContactSendResponse(true, {
-      success: 'false',
-      message: 'This form needs Activation. We sent you an email.',
-    }).status,
-    'needs-activation',
-  );
-  assert.equal(parseContactSendResponse(false, { message: 'Server error' }).status, 'error');
+test('parseContactSendResponse distinguishes sent, invalid, and error states', () => {
+  assert.equal(parseContactSendResponse(true, { ok: true, next: '/thanks' }).status, 'sent');
+
+  const invalid = parseContactSendResponse(false, {
+    errors: [{ field: 'email', message: 'is invalid' }],
+  });
+  assert.equal(invalid.status, 'invalid');
+  assert.equal(invalid.fieldErrors.email, 'is invalid');
+
+  const failed = parseContactSendResponse(false, { errors: [{ message: 'Form not found' }] });
+  assert.equal(failed.status, 'error');
+  assert.equal(failed.message, 'Form not found');
+
   assert.equal(parseContactSendResponse(false, null).status, 'error');
 });

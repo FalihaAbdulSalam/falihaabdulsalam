@@ -17,12 +17,12 @@ import {
   Phone,
   Send,
 } from 'lucide-react';
-import { PROFILE, SKILL_GROUPS } from '../data/portfolioData';
+import { CONTACT_FORM_ENDPOINT, PROFILE, SKILL_GROUPS } from '../data/portfolioData';
 import {
-  buildContactEmailEndpoint,
-  buildContactEmailPayload,
+  buildContactFormPayload,
   buildMailtoHref,
   parseContactSendResponse,
+  resolveContactFormEndpoint,
   validateContactForm,
   type ContactFormInput,
 } from '../utils/portfolio';
@@ -55,6 +55,12 @@ const CAPABILITY_STYLES = [
   },
 ];
 
+// Formspree form endpoint (https://formspree.io/f/<form-id>), from the build env or
+// the checked-in fallback. Without one, the form falls back to a prefilled mail draft.
+const CONTACT_ENDPOINT = resolveContactFormEndpoint(
+  import.meta.env.VITE_CONTACT_FORM_ENDPOINT ?? CONTACT_FORM_ENDPOINT,
+);
+
 export function CapabilitiesAndContact() {
   const [copiedField, setCopiedField] = useState<'email' | 'phone' | null>(null);
   const [formState, setFormState] = useState<ContactFormInput>({
@@ -65,7 +71,9 @@ export function CapabilitiesAndContact() {
   });
   const [formErrors, setFormErrors] = useState<Partial<Record<keyof ContactFormInput, string>>>({});
   const [honeypot, setHoneypot] = useState('');
-  const [sendStatus, setSendStatus] = useState<'idle' | 'sending' | 'sent' | 'needs-activation' | 'error'>('idle');
+  const [sendStatus, setSendStatus] = useState<
+    'idle' | 'sending' | 'sent' | 'mailto' | 'error'
+  >('idle');
   const [statusMessage, setStatusMessage] = useState<string>('');
   const [fallbackMailtoHref, setFallbackMailtoHref] = useState<string | null>(null);
 
@@ -94,19 +102,29 @@ export function CapabilitiesAndContact() {
     }
 
     setFormErrors({});
-    setSendStatus('sending');
     setStatusMessage('');
     const mailtoHref = buildMailtoHref(PROFILE.email, formState);
     setFallbackMailtoHref(mailtoHref);
 
+    if (!CONTACT_ENDPOINT) {
+      window.location.href = mailtoHref;
+      setSendStatus('mailto');
+      setStatusMessage(
+        'Your email app is opening with this message prefilled — press send there and it reaches my inbox directly.',
+      );
+      return;
+    }
+
+    setSendStatus('sending');
+
     try {
-      const response = await fetch(buildContactEmailEndpoint(PROFILE.email), {
+      const response = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify(buildContactEmailPayload(formState)),
+        body: JSON.stringify(buildContactFormPayload(formState)),
       });
 
       let responseData: unknown = null;
@@ -117,6 +135,14 @@ export function CapabilitiesAndContact() {
       }
 
       const outcome = parseContactSendResponse(response.ok, responseData);
+
+      if (outcome.status === 'invalid') {
+        setFormErrors(outcome.fieldErrors);
+        setSendStatus('error');
+        setStatusMessage('Please fix the highlighted fields and try again.');
+        return;
+      }
+
       setSendStatus(outcome.status);
       setStatusMessage(
         outcome.status === 'sent'
@@ -371,7 +397,7 @@ export function CapabilitiesAndContact() {
                   </p>
                   <input
                     type="text"
-                    name="_honey"
+                    name="_gotcha"
                     value={honeypot}
                     onChange={(e) => setHoneypot(e.target.value)}
                     tabIndex={-1}
@@ -498,27 +524,22 @@ export function CapabilitiesAndContact() {
                         </motion.div>
                       )}
 
-                      {sendStatus === 'needs-activation' && (
+                      {sendStatus === 'mailto' && (
                         <motion.div
-                          key="activation"
+                          key="mailto"
                           initial={{ opacity: 0, y: 6 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -4 }}
                           transition={{ duration: 0.2 }}
                           role="status"
-                          data-testid="contact-activation"
-                          className="flex flex-col gap-2 rounded-xl border border-amber-200 bg-amber-50/90 px-3.5 py-2.5 text-xs text-amber-950 dark:border-amber-800/80 dark:bg-amber-950/60 dark:text-amber-200"
+                          data-testid="contact-mailto"
+                          className="flex items-start gap-2.5 rounded-xl border border-sky-200 bg-sky-50/90 px-3.5 py-2.5 text-xs text-sky-950 dark:border-sky-800/80 dark:bg-sky-950/60 dark:text-sky-200"
                         >
+                          <Mail
+                            className="mt-0.5 h-4 w-4 shrink-0 text-sky-600 dark:text-sky-400"
+                            aria-hidden="true"
+                          />
                           <span>{statusMessage}</span>
-                          {fallbackMailtoHref && (
-                            <a
-                              href={fallbackMailtoHref}
-                              className="inline-flex w-fit items-center gap-1 font-semibold text-[#1D4ED8] underline underline-offset-2 dark:text-sky-400"
-                            >
-                              <span>Open Email App</span>
-                              <ExternalLink className="h-3 w-3" aria-hidden="true" />
-                            </a>
-                          )}
                         </motion.div>
                       )}
 

@@ -80,9 +80,16 @@ export const PROFILE = {
   linkedinHandle: 'faliha-abdul-salam',
   githubPrimaryUrl: 'https://github.com/FalihaAbdulSalam',
   githubPrimaryHandle: 'FalihaAbdulSalam',
-  headline: 'Building fast, reliable web platforms and mobile experiences.',
+  headline:
+    'Front-end and React Native engineer with 4+ years building fast, reliable platforms, based in Kerala, India.',
   bio: 'I design and build responsive web platforms and cross-platform mobile apps with React 19, Next.js, TypeScript, and React Native. From statewide public-sector portals serving 10,000+ citizens daily to high-converting storefronts, I pair clean UI craft with dependable full-stack integration.',
 };
+
+/**
+ * Public Formspree form endpoint (https://formspree.io/f/<form-id>).
+ * Set VITE_CONTACT_FORM_ENDPOINT at build time to override without a code change.
+ */
+export const CONTACT_FORM_ENDPOINT = '';
 
 export const KEY_METRICS = [
   {

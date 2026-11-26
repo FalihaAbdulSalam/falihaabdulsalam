@@ -153,11 +153,11 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
                 className="font-display mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-[3.2rem] lg:leading-[1.08] dark:text-white"
                 style={{ textWrap: 'balance' }}
               >
-                Building{' '}
+                Front-end and React Native engineer with{' '}
                 <span className="bg-gradient-to-r from-[#2563EB] via-[#7C3AED] via-[#EC4899] to-[#EA580C] bg-clip-text text-transparent dark:from-sky-400 dark:via-violet-400 dark:via-pink-400 dark:to-amber-400">
-                  fast, reliable
+                  4+ years
                 </span>{' '}
-                web platforms and mobile experiences.
+                building fast, reliable platforms, based in Kerala, India.
               </h1>
 
               <div className="mt-5 grid grid-cols-1 items-center gap-5 sm:grid-cols-12">

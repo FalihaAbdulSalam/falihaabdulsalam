@@ -200,66 +200,81 @@ export function getSideSlideOffset(index: number, distance = 56): number {
   return index % 2 === 0 ? -safeDistance : safeDistance;
 }
 
-export interface ContactEmailPayload {
+export interface ContactFormPayload {
   name: string;
   email: string;
   _replyto: string;
+  subject: string;
   _subject: string;
   message: string;
-  _template: 'table';
-  _captcha: 'false';
-  _honey: string;
+  _gotcha: string;
 }
 
-export function buildContactEmailEndpoint(toEmail: string): string {
-  return `https://formsubmit.co/ajax/${encodeURIComponent(toEmail.trim())}`;
+const FORMSPREE_ENDPOINT_PATTERN = /^https:\/\/(?:www\.)?formspree\.io\/f\/[A-Za-z0-9]+$/;
+
+export function resolveContactFormEndpoint(
+  configured: string | null | undefined,
+): string | null {
+  const trimmed = (configured ?? '').trim();
+  return FORMSPREE_ENDPOINT_PATTERN.test(trimmed) ? trimmed : null;
 }
 
-export function buildContactEmailPayload(input: ContactFormInput): ContactEmailPayload {
+export function buildContactFormPayload(input: ContactFormInput): ContactFormPayload {
   const trimmedEmail = input.email.trim();
   const trimmedSubject = input.subject.trim();
   return {
     name: input.name.trim(),
     email: trimmedEmail,
     _replyto: trimmedEmail,
+    subject: trimmedSubject,
     _subject: `[Portfolio Inquiry] ${trimmedSubject}`,
     message: input.message.trim(),
-    _template: 'table',
-    _captcha: 'false',
-    _honey: '',
+    _gotcha: '',
   };
 }
 
+export type ContactSendStatus = 'sent' | 'invalid' | 'error';
+
 export interface ContactSendOutcome {
-  status: 'sent' | 'needs-activation' | 'error';
+  status: ContactSendStatus;
   message: string;
+  fieldErrors: Partial<Record<keyof ContactFormInput, string>>;
 }
 
 export function parseContactSendResponse(ok: boolean, data: unknown): ContactSendOutcome {
   const record =
     data && typeof data === 'object' ? (data as Record<string, unknown>) : null;
-  const rawMessage = typeof record?.message === 'string' ? record.message : '';
-  const successFlag = record?.success === true || record?.success === 'true';
 
-  if (ok && successFlag) {
-    return {
-      status: 'sent',
-      message: 'Message sent successfully!',
-    };
+  if (ok && record?.ok === true) {
+    return { status: 'sent', message: 'Message sent successfully!', fieldErrors: {} };
   }
 
-  if (/activat/i.test(rawMessage)) {
-    return {
-      status: 'needs-activation',
-      message:
-        'A one-time activation email was just sent to confirm form delivery. Please check the inbox and click Activate Form, or use the email app link below.',
-    };
+  const fieldErrors: Partial<Record<keyof ContactFormInput, string>> = {};
+  const errors = record && Array.isArray(record.errors) ? record.errors : [];
+  let firstMessage = '';
+
+  for (const entry of errors) {
+    if (!entry || typeof entry !== 'object') {
+      continue;
+    }
+    const { field, message } = entry as { field?: unknown; message?: unknown };
+    if (typeof message !== 'string' || message.trim().length === 0) {
+      continue;
+    }
+    firstMessage = firstMessage || message;
+    if (field === 'name' || field === 'email' || field === 'subject' || field === 'message') {
+      fieldErrors[field] = message;
+    }
+  }
+
+  if (Object.keys(fieldErrors).length > 0) {
+    return { status: 'invalid', message: firstMessage, fieldErrors };
   }
 
   return {
     status: 'error',
     message:
-      rawMessage ||
-      'Unable to send right now. Please try again or use your email app below.',
+      firstMessage || 'Unable to send right now. Please try again or email me directly.',
+    fieldErrors: {},
   };
 }
