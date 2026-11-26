@@ -13,6 +13,11 @@
  *
  * Delivering the email — first option that is configured wins:
  *
+ *   - An HTTPS email API when MAIL_API_KEY is set. This is the option that
+ *     works on Vercel without any SMTP setup — one key, no app password:
+ *       MAIL_API_KEY   the provider's API key
+ *       MAIL_API_URL   optional, defaults to SMTP2GO's v3 send endpoint
+ *       MAIL_FROM      optional sender, defaults to SMTP_FROM / SMTP_USER / MAIL_TO
  *   - Authenticated SMTP when SMTP_HOST / SMTP_USER / SMTP_PASS are set.
  *     On Vercel there is no sendmail binary, so SMTP is the way to send mail
  *     from a function. Set them in Vercel -> Settings -> Environment Variables:
@@ -226,6 +231,57 @@ function send_via_smtp(string $to, string $subject, string $body, string $fromEm
     }
 }
 
+/**
+ * Send the message through an HTTPS email API (SMTP2GO's v3 endpoint by
+ * default). Only an API key is needed, which is what makes this the practical
+ * transport on Vercel.
+ *
+ * @throws RuntimeException when the provider rejects the request.
+ */
+function send_via_api(string $to, string $subject, string $body, string $fromEmail, string $replyTo, string $replyName): void
+{
+    if (!function_exists('curl_init')) {
+        throw new RuntimeException('cURL extension is not available');
+    }
+
+    $payload = json_encode([
+        'api_key' => setting('MAIL_API_KEY'),
+        'to' => [$to],
+        'sender' => $fromEmail,
+        'subject' => $subject,
+        'text_body' => $body,
+        'custom_headers' => [
+            ['header' => 'Reply-To', 'value' => $replyName . ' <' . $replyTo . '>'],
+        ],
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+    $curl = curl_init(setting('MAIL_API_URL', 'https://api.smtp2go.com/v3/email/send'));
+    curl_setopt_array($curl, [
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => $payload,
+        CURLOPT_HTTPHEADER => ['Content-Type: application/json', 'Accept: application/json'],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 10,
+        CURLOPT_TIMEOUT => 20,
+    ]);
+
+    $raw = curl_exec($curl);
+    $status = (int) curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    $transportError = curl_error($curl);
+    curl_close($curl);
+
+    if ($raw === false) {
+        throw new RuntimeException('api request failed: ' . $transportError);
+    }
+
+    $decoded = json_decode((string) $raw, true);
+    $failed = (int) ($decoded['data']['failed'] ?? 0);
+
+    if ($status < 200 || $status >= 300 || $failed > 0) {
+        throw new RuntimeException('api rejected (' . $status . '): ' . substr((string) $raw, 0, 300));
+    }
+}
+
 $input = read_input();
 
 // Honeypot: real people never fill a field they cannot see.
@@ -269,14 +325,25 @@ $body = "New portfolio enquiry\n\n"
 
 $mailSubject = '[Portfolio Enquiry] ' . $subject;
 
+$fromEmail = setting('MAIL_FROM', setting('SMTP_FROM', setting('SMTP_USER', MAIL_TO)));
+
+if (setting('MAIL_API_KEY') !== '') {
+    try {
+        send_via_api(MAIL_TO, $mailSubject, $body, $fromEmail, $email, $name);
+        respond(200, ['ok' => true]);
+    } catch (Throwable $error) {
+        error_log('portfolio contact.php mail API failed: ' . $error->getMessage());
+        respond(502, ['errors' => [['message' => 'The mail service rejected the message. Please email me directly instead.']]]);
+    }
+}
+
 if (setting('SMTP_HOST') !== '') {
-    $fromEmail = setting('SMTP_FROM', setting('SMTP_USER', MAIL_TO));
     try {
         send_via_smtp(MAIL_TO, $mailSubject, $body, $fromEmail, $email, $name);
         respond(200, ['ok' => true]);
     } catch (Throwable $error) {
         error_log('portfolio contact.php SMTP failed: ' . $error->getMessage());
-        respond(500, ['errors' => [['message' => 'The mail server refused the message. Please email me directly instead.']]]);
+        respond(502, ['errors' => [['message' => 'The mail server refused the message. Please email me directly instead.']]]);
     }
 }
 
@@ -291,8 +358,8 @@ $headers = [
 $sent = @mail(MAIL_TO, $mailSubject, $body, implode("\r\n", $headers), '-f' . MAIL_TO);
 
 if (!$sent) {
-    error_log('portfolio contact.php: mail() failed for ' . $email . ' (no SMTP_HOST configured)');
-    respond(500, ['errors' => [['message' => 'The mail server refused the message. Please email me directly instead.']]]);
+    error_log('portfolio contact.php: no transport configured (set MAIL_API_KEY or SMTP_HOST) and mail() failed for ' . $email);
+    respond(503, ['errors' => [['message' => 'The contact form is not set up to send mail yet. Please email me directly instead.']]]);
 }
 
 respond(200, ['ok' => true]);
