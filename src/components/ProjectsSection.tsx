@@ -36,40 +36,40 @@ const CATEGORY_ACCENT: Record<
   }
 > = {
   'Public Sector': {
-    topBar: 'bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#0D9488]',
-    text: 'text-[#1D4ED8] dark:text-sky-400',
-    badgeBg: 'bg-blue-50 text-[#1D4ED8] border-blue-200 dark:bg-blue-950/75 dark:text-sky-300 dark:border-blue-800/80',
-    cardBg: 'bg-white dark:bg-[#0F172A]/95',
-    hoverBorder: 'hover:border-blue-400 dark:hover:border-sky-400/80',
+    topBar: 'bg-gradient-to-r from-[#E2502A] via-[#8E2F5B] to-[#15795B]',
+    text: 'text-[#B93B18] dark:text-orange-400',
+    badgeBg: 'bg-orange-50 text-[#B93B18] border-orange-200 dark:bg-orange-950/75 dark:text-orange-300 dark:border-orange-800/80',
+    cardBg: 'bg-white dark:bg-[#1A1016]/95',
+    hoverBorder: 'hover:border-orange-400 dark:hover:border-orange-400/80',
     hoverShadow:
-      'hover:shadow-[0_20px_40px_-14px_rgba(37,99,235,0.24),0_8px_16px_-6px_rgba(15,23,42,0.08)] dark:hover:shadow-[0_20px_44px_-14px_rgba(56,189,248,0.28),0_10px_20px_-6px_rgba(2,6,23,0.65)]',
+      'hover:shadow-[0_20px_40px_-14px_rgba(226,80,42,0.24),0_8px_16px_-6px_rgba(26,16,22,0.08)] dark:hover:shadow-[0_20px_44px_-14px_rgba(255,138,92,0.28),0_10px_20px_-6px_rgba(12,6,10,0.65)]',
   },
   'Mobile & Native': {
-    topBar: 'bg-gradient-to-r from-[#0D9488] via-[#10B981] to-[#06B6D4]',
-    text: 'text-[#0F766E] dark:text-teal-400',
-    badgeBg: 'bg-teal-50 text-[#0F766E] border-teal-200 dark:bg-teal-950/75 dark:text-teal-300 dark:border-teal-800/80',
-    cardBg: 'bg-white dark:bg-[#0F172A]/95',
-    hoverBorder: 'hover:border-teal-400 dark:hover:border-teal-400/80',
+    topBar: 'bg-gradient-to-r from-[#15795B] via-[#1E8E63] to-[#1F8F72]',
+    text: 'text-[#116248] dark:text-emerald-400',
+    badgeBg: 'bg-emerald-50 text-[#116248] border-emerald-200 dark:bg-emerald-950/75 dark:text-emerald-300 dark:border-emerald-800/80',
+    cardBg: 'bg-white dark:bg-[#1A1016]/95',
+    hoverBorder: 'hover:border-emerald-400 dark:hover:border-emerald-400/80',
     hoverShadow:
-      'hover:shadow-[0_20px_40px_-14px_rgba(13,148,136,0.24),0_8px_16px_-6px_rgba(15,23,42,0.08)] dark:hover:shadow-[0_20px_44px_-14px_rgba(20,184,166,0.28),0_10px_20px_-6px_rgba(2,6,23,0.65)]',
+      'hover:shadow-[0_20px_40px_-14px_rgba(21,121,91,0.24),0_8px_16px_-6px_rgba(26,16,22,0.08)] dark:hover:shadow-[0_20px_44px_-14px_rgba(42,163,124,0.28),0_10px_20px_-6px_rgba(12,6,10,0.65)]',
   },
   'Commerce & Web': {
-    topBar: 'bg-gradient-to-r from-[#7C3AED] via-[#EC4899] to-[#F43F5E]',
-    text: 'text-[#7C3AED] dark:text-violet-400',
-    badgeBg: 'bg-violet-50 text-[#7C3AED] border-violet-200 dark:bg-violet-950/75 dark:text-violet-300 dark:border-violet-800/80',
-    cardBg: 'bg-white dark:bg-[#0F172A]/95',
-    hoverBorder: 'hover:border-violet-400 dark:hover:border-violet-400/80',
+    topBar: 'bg-gradient-to-r from-[#7B2B52] via-[#C08A1E] to-[#A96F14]',
+    text: 'text-[#7B2B52] dark:text-rose-400',
+    badgeBg: 'bg-rose-50 text-[#7B2B52] border-rose-200 dark:bg-rose-950/75 dark:text-rose-300 dark:border-rose-800/80',
+    cardBg: 'bg-white dark:bg-[#1A1016]/95',
+    hoverBorder: 'hover:border-rose-400 dark:hover:border-rose-400/80',
     hoverShadow:
-      'hover:shadow-[0_20px_40px_-14px_rgba(124,58,237,0.24),0_8px_16px_-6px_rgba(15,23,42,0.08)] dark:hover:shadow-[0_20px_44px_-14px_rgba(167,139,250,0.28),0_10px_20px_-6px_rgba(2,6,23,0.65)]',
+      'hover:shadow-[0_20px_40px_-14px_rgba(123,43,82,0.24),0_8px_16px_-6px_rgba(26,16,22,0.08)] dark:hover:shadow-[0_20px_44px_-14px_rgba(168,69,122,0.28),0_10px_20px_-6px_rgba(12,6,10,0.65)]',
   },
   'AI & Open Source': {
-    topBar: 'bg-gradient-to-r from-[#EA580C] via-[#F59E0B] to-[#EC4899]',
-    text: 'text-[#C2410C] dark:text-amber-400',
-    badgeBg: 'bg-amber-50 text-[#C2410C] border-amber-200 dark:bg-amber-950/75 dark:text-amber-300 dark:border-amber-800/80',
-    cardBg: 'bg-white dark:bg-[#0F172A]/95',
+    topBar: 'bg-gradient-to-r from-[#A9701A] via-[#D9A441] to-[#C08A1E]',
+    text: 'text-[#8E5A12] dark:text-amber-400',
+    badgeBg: 'bg-amber-50 text-[#8E5A12] border-amber-200 dark:bg-amber-950/75 dark:text-amber-300 dark:border-amber-800/80',
+    cardBg: 'bg-white dark:bg-[#1A1016]/95',
     hoverBorder: 'hover:border-amber-400 dark:hover:border-amber-400/80',
     hoverShadow:
-      'hover:shadow-[0_20px_40px_-14px_rgba(234,88,12,0.24),0_8px_16px_-6px_rgba(15,23,42,0.08)] dark:hover:shadow-[0_20px_44px_-14px_rgba(251,191,36,0.26),0_10px_20px_-6px_rgba(2,6,23,0.65)]',
+      'hover:shadow-[0_20px_40px_-14px_rgba(169,112,26,0.24),0_8px_16px_-6px_rgba(26,16,22,0.08)] dark:hover:shadow-[0_20px_44px_-14px_rgba(217,164,65,0.26),0_10px_20px_-6px_rgba(12,6,10,0.65)]',
   },
 };
 
@@ -93,18 +93,18 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden border-b border-indigo-200/80 bg-gradient-to-br from-[#DBEAFE] via-[#E0F2FE] via-[#F3E8FF]/85 to-[#FCE7F3] py-16 lg:py-20 dark:border-indigo-900/70 dark:bg-[linear-gradient(135deg,#091224_0%,#0F1C3A_35%,#1B1136_70%,#271028_100%)]"
+      className="relative overflow-hidden animate-gradient-pan border-b border-rose-200/80 bg-gradient-to-br from-[#FBEADF] via-[#FDF2E9] via-[#F9EBF0]/85 to-[#FBF0DC] py-16 lg:py-20 dark:border-rose-900/70 dark:bg-[linear-gradient(135deg,#120A10_0%,#241320_35%,#2A1220_70%,#331322_100%)]"
     >
       <div
-        className="pointer-events-none absolute -top-24 left-1/4 h-[28rem] w-[28rem] rounded-full bg-indigo-400/25 blur-3xl dark:bg-indigo-600/20"
+        className="pointer-events-none absolute -top-24 left-1/4 h-[28rem] w-[28rem] rounded-full bg-rose-400/25 blur-3xl dark:bg-rose-600/20"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute right-10 bottom-20 h-[28rem] w-[28rem] rounded-full bg-teal-400/25 blur-3xl dark:bg-teal-500/20"
+        className="pointer-events-none absolute right-10 bottom-20 h-[28rem] w-[28rem] rounded-full bg-emerald-400/25 blur-3xl dark:bg-emerald-500/20"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute left-10 top-1/2 h-80 w-80 rounded-full bg-pink-300/25 blur-3xl dark:bg-pink-600/18"
+        className="pointer-events-none absolute left-10 top-1/2 h-80 w-80 rounded-full bg-amber-300/25 blur-3xl dark:bg-amber-600/18"
         aria-hidden="true"
       />
       <ProjectsBlueprintBackdrop />
@@ -119,8 +119,8 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
           className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end"
         >
           <div className="max-w-2xl">
-            <p className="inline-flex items-center gap-2.5 text-xs font-semibold tracking-wide text-[#1D4ED8] dark:text-sky-400">
-              <span className="h-0.5 w-6 rounded-full bg-gradient-to-r from-[#2563EB] to-[#0D9488]" aria-hidden="true" />
+            <p className="inline-flex items-center gap-2.5 text-xs font-semibold tracking-wide text-[#B93B18] dark:text-orange-400">
+              <span className="h-0.5 w-6 rounded-full bg-gradient-to-r from-[#E2502A] to-[#15795B]" aria-hidden="true" />
               <span>01. Selected Works &amp; Case Studies</span>
             </p>
             <h2
@@ -136,7 +136,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
         </motion.div>
 
         {/* Filter Bar: Segmented Category Tabs + Search + Sort */}
-        <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-indigo-200/80 bg-white/90 p-3.5 shadow-xs backdrop-blur-xs lg:flex-row lg:items-center lg:justify-between dark:border-slate-700/80 dark:bg-[#0F172A]/90">
+        <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-rose-200/80 bg-white/90 p-3.5 shadow-xs backdrop-blur-xs lg:flex-row lg:items-center lg:justify-between dark:border-slate-700/80 dark:bg-[#1A1016]/90">
           <div
             role="tablist"
             aria-label="Filter projects by domain"
@@ -151,17 +151,17 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                   role="tab"
                   aria-selected={isSelected}
                   onClick={() => setActiveCategory(option)}
-                  className={`relative rounded-lg px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${
+                  className={`relative rounded-lg px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] ${
                     isSelected
                       ? 'text-white'
-                      : 'text-slate-700 hover:text-[#1D4ED8] dark:text-slate-300 dark:hover:text-sky-400'
+                      : 'text-slate-700 hover:text-[#B93B18] dark:text-slate-300 dark:hover:text-orange-400'
                   }`}
                 >
                   {isSelected && (
                     <motion.span
                       layoutId="projects-filter-tab"
                       transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-                      className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#2563EB] to-[#4F46E5] shadow-xs"
+                      className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#E2502A] to-[#8E2F5B] shadow-xs"
                       aria-hidden="true"
                     />
                   )}
@@ -188,7 +188,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search Akshaya, React Native..."
-                className="h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-8 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/20 sm:w-68 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+                className="h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-8 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 sm:w-68 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
               />
               {searchQuery && (
                 <button
@@ -210,7 +210,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 id="project-sort"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="h-10 rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 focus:border-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                className="h-10 rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
               >
                 <option value="featured">Sort: Featured Impact</option>
                 <option value="alphabetical">Sort: Alphabetical (A–Z)</option>
@@ -221,7 +221,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
 
         {/* Project Bento Grid with Card Entrance & Scroll Animations */}
         {filteredProjects.length === 0 ? (
-          <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-12 text-center dark:border-slate-700/80 dark:bg-[#0F172A]/95">
+          <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-12 text-center dark:border-slate-700/80 dark:bg-[#1A1016]/95">
             <h3 className="font-display text-lg font-semibold text-slate-950 dark:text-white">
               No projects match your current filter
             </h3>
@@ -231,7 +231,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
             <button
               type="button"
               onClick={resetFilters}
-              className="mt-5 inline-flex items-center rounded-lg bg-[#2563EB] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#1E40AF]"
+              className="mt-5 inline-flex items-center rounded-lg bg-[#E2502A] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#9A2E12]"
             >
               Reset Filters
             </button>
@@ -274,7 +274,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                       delay: Math.min((idx % 2) * 0.07, 0.14),
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className={`group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-700/80 ${accent.cardBg} shadow-sm transition-[box-shadow,border-color] duration-200 ${accent.hoverShadow} ${accent.hoverBorder} ${
+                    className={`card-sheen group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-700/80 ${accent.cardBg} shadow-sm transition-[box-shadow,border-color] duration-200 ${accent.hoverShadow} ${accent.hoverBorder} ${
                       isWide ? 'lg:col-span-2' : ''
                     }`}
                   >
@@ -327,7 +327,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                       type="button"
                       onClick={() => onSelectProject(project)}
                       aria-label={`Read case study for ${project.title}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-950 transition-colors hover:text-[#2563EB] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm dark:text-slate-100 dark:hover:text-sky-400"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-950 transition-colors hover:text-[#E2502A] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:text-slate-100 dark:hover:text-orange-400"
                     >
                       <span>Case Study</span>
                       <ArrowUpRight
@@ -343,7 +343,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`View GitHub repository for ${project.title}`}
-                          className="inline-flex items-center gap-1 text-xs font-medium text-slate-600 hover:text-slate-950 whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm dark:text-slate-300 dark:hover:text-white"
+                          className="inline-flex items-center gap-1 text-xs font-medium text-slate-600 hover:text-slate-950 whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:text-slate-300 dark:hover:text-white"
                         >
                           <Github className="h-3.5 w-3.5" aria-hidden="true" />
                           <span>Source</span>
@@ -355,7 +355,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Open live site for ${project.title}`}
-                          className="inline-flex items-center gap-1 text-xs font-semibold text-[#1D4ED8] hover:text-[#4F46E5] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm dark:text-sky-400 dark:hover:text-sky-300"
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-[#B93B18] hover:text-[#8E2F5B] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:text-orange-400 dark:hover:text-orange-300"
                         >
                           <span>{project.liveLabel ?? 'Live Site'}</span>
                           <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
@@ -388,7 +388,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 href={PROFILE.githubPrimaryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-[#2563EB] hover:underline dark:text-sky-400"
+                className="font-semibold text-[#E2502A] hover:underline dark:text-orange-400"
               >
                 github.com/FalihaAbdulSalam
               </a>
@@ -400,7 +400,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
             <div className="mt-6 space-y-5">
               {ADDITIONAL_PROJECT_GROUPS.map((group) => (
                 <div key={group.group} className="border-t border-slate-200 pt-4 dark:border-slate-700/70">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#0D9488] dark:text-teal-400">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#15795B] dark:text-emerald-400">
                     {group.group}
                   </h4>
                   <ul className="mt-2.5 space-y-2">
@@ -412,7 +412,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                             href={item.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 font-mono text-xs text-[#2563EB] hover:underline shrink-0 dark:text-sky-400"
+                            className="inline-flex items-center gap-1 font-mono text-xs text-[#E2502A] hover:underline shrink-0 dark:text-orange-400"
                           >
                             <span>Visit</span>
                             <ExternalLink className="h-3 w-3" aria-hidden="true" />
@@ -435,13 +435,13 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
             transition={{ duration: 0.52, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7"
           >
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700/80 dark:bg-[#0F172A]/95">
-              <div className="h-1.5 w-full bg-gradient-to-r from-[#2563EB] via-[#0D9488] to-[#7C3AED]" aria-hidden="true" />
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700/80 dark:bg-[#1A1016]/95">
+              <div className="h-1.5 w-full bg-gradient-to-r from-[#E2502A] via-[#15795B] to-[#7B2B52]" aria-hidden="true" />
               <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50/70 px-5 py-4 text-slate-900 dark:border-slate-800 dark:bg-slate-800/70 dark:text-white">
                 <span className="text-sm font-bold">
                   Verified Public Repositories
                 </span>
-                <span className="rounded-md border border-indigo-200 bg-indigo-50 px-2.5 py-0.5 font-mono text-xs font-semibold text-[#1D4ED8] tabular-nums dark:border-indigo-700/80 dark:bg-indigo-950/80 dark:text-sky-300">
+                <span className="rounded-md border border-rose-200 bg-rose-50 px-2.5 py-0.5 font-mono text-xs font-semibold text-[#B93B18] tabular-nums dark:border-rose-700/80 dark:bg-rose-950/80 dark:text-orange-300">
                   {PUBLIC_GITHUB_REPOS.length} public repos
                 </span>
               </div>
@@ -449,19 +449,19 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 {PUBLIC_GITHUB_REPOS.map((repo) => (
                   <div
                     key={repo.url}
-                    className="flex flex-col justify-between gap-3 px-5 py-4 transition-colors hover:bg-blue-50/40 sm:flex-row sm:items-center dark:hover:bg-slate-800/50"
+                    className="flex flex-col justify-between gap-3 px-5 py-4 transition-colors hover:bg-orange-50/40 sm:flex-row sm:items-center dark:hover:bg-slate-800/50"
                   >
                     <div>
                       <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                         <span className="font-mono text-slate-700 dark:text-slate-300">{repo.account}</span>
                         <span aria-hidden="true">·</span>
-                        <span className="font-medium text-[#0D9488] dark:text-teal-400">{repo.language}</span>
+                        <span className="font-medium text-[#15795B] dark:text-emerald-400">{repo.language}</span>
                       </div>
                       <a
                         href={repo.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-0.5 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-950 hover:text-[#2563EB] dark:text-white dark:hover:text-sky-400"
+                        className="mt-0.5 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-950 hover:text-[#E2502A] dark:text-white dark:hover:text-orange-400"
                       >
                         <span>{repo.name}</span>
                         <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -475,7 +475,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                           href={repo.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="rounded-lg border border-blue-200 bg-blue-50/70 px-3 py-1.5 text-xs font-medium text-[#1D4ED8] transition-colors hover:bg-blue-100 whitespace-nowrap dark:border-blue-800/80 dark:bg-blue-950/70 dark:text-sky-300 dark:hover:bg-blue-900/70"
+                          className="rounded-lg border border-orange-200 bg-orange-50/70 px-3 py-1.5 text-xs font-medium text-[#B93B18] transition-colors hover:bg-orange-100 whitespace-nowrap dark:border-orange-800/80 dark:bg-orange-950/70 dark:text-orange-300 dark:hover:bg-orange-900/70"
                         >
                           Live Demo
                         </a>
@@ -484,7 +484,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                         href={repo.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-lg bg-gradient-to-r from-[#0F172A] to-[#1E293B] px-3 py-1.5 text-xs font-medium text-white transition-opacity hover:opacity-90 whitespace-nowrap dark:from-indigo-600 dark:to-blue-600"
+                        className="rounded-lg bg-gradient-to-r from-[#1A1016] to-[#2A1B22] px-3 py-1.5 text-xs font-medium text-white transition-opacity hover:opacity-90 whitespace-nowrap dark:from-rose-600 dark:to-orange-600"
                       >
                         GitHub
                       </a>

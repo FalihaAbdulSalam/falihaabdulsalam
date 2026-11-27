@@ -44,7 +44,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: 8 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl sm:p-8 dark:border-slate-700/80 dark:bg-[#0F172A]"
+            className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl sm:p-8 dark:border-slate-700/80 dark:bg-[#1A1016]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4">
@@ -68,7 +68,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close case study modal"
-                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -79,7 +79,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             <div className="mt-5 border-b border-slate-200 pb-4 dark:border-slate-800">
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#1D4ED8] dark:text-sky-400">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#B93B18] dark:text-orange-400">
                 Key Outcome: {project.impactMetric}
               </p>
               <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">{project.summary}</p>
@@ -92,7 +92,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <ul className="mt-3 space-y-2.5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                 {project.highlights.map((bullet, idx) => (
                   <li key={idx} className="flex gap-3">
-                    <span className="pt-0.5 font-mono text-xs text-[#1D4ED8] tabular-nums dark:text-sky-400">
+                    <span className="pt-0.5 font-mono text-xs text-[#B93B18] tabular-nums dark:text-orange-400">
                       0{idx + 1}
                     </span>
                     <span>{bullet}</span>
@@ -135,7 +135,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#1D4ED8] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#1E40AF] dark:bg-sky-600 dark:hover:bg-sky-500"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#B93B18] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#9A2E12] dark:bg-orange-600 dark:hover:bg-orange-500"
                   >
                     <span>Open {project.liveLabel ?? 'Live Site'}</span>
                     <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />

@@ -11,11 +11,7 @@ import { ArrowUpRight, ExternalLink, Github, Linkedin } from 'lucide-react';
 import { KEY_METRICS, PROFILE, PROJECTS, type ProjectItem } from '../data/portfolioData';
 import { formatMetricValue, parseMetricValue } from '../utils/portfolio';
 import { ProjectVisual } from './ProjectVisual';
-import {
-  CodeVectorBackdrop,
-  HeroFloatingTechIcons,
-  HeroWorkspaceIllustration,
-} from './VectorIllustrations';
+import { CodeVectorBackdrop, HeroFloatingTechIcons } from './VectorIllustrations';
 
 interface HeroSectionProps {
   onSelectProject: (project: ProjectItem) => void;
@@ -28,15 +24,15 @@ const FLAGSHIP_TABS = [
 ] as const;
 
 const METRIC_ACCENTS = [
-  'text-[#2563EB] dark:text-sky-400',
-  'text-[#0D9488] dark:text-teal-400',
-  'text-[#EC4899] dark:text-pink-400',
-  'text-[#EA580C] dark:text-amber-400',
+  'text-[#E2502A] dark:text-orange-400',
+  'text-[#15795B] dark:text-emerald-400',
+  'text-[#C08A1E] dark:text-amber-400',
+  'text-[#A9701A] dark:text-amber-400',
 ];
 
 const HERO_BACKDROP_STYLE = {
   backgroundImage:
-    'radial-gradient(circle at 14% 20%, rgba(56, 189, 248, 0.28) 0%, transparent 42%), radial-gradient(circle at 86% 18%, rgba(167, 139, 250, 0.26) 0%, transparent 44%), radial-gradient(circle at 74% 82%, rgba(244, 114, 182, 0.22) 0%, transparent 45%), radial-gradient(circle at 32% 78%, rgba(20, 184, 166, 0.22) 0%, transparent 44%)',
+    'radial-gradient(circle at 14% 20%, rgba(226, 80, 42, 0.28) 0%, transparent 42%), radial-gradient(circle at 86% 18%, rgba(123, 43, 82, 0.26) 0%, transparent 44%), radial-gradient(circle at 74% 82%, rgba(192, 138, 30, 0.22) 0%, transparent 45%), radial-gradient(circle at 32% 78%, rgba(21, 121, 91, 0.22) 0%, transparent 44%)',
 };
 
 function AnimatedMetricValue({ value }: { value: string }) {
@@ -89,24 +85,24 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
   return (
     <section
       id="top"
-      className="relative overflow-hidden border-b border-indigo-200/80 bg-[linear-gradient(135deg,#DBEAFE_0%,#E0F2FE_28%,#F0FDFA_55%,#EDE9FE_80%,#FCE7F3_100%)] dark:border-indigo-900/70 dark:bg-[linear-gradient(135deg,#0B152B_0%,#0F1F3D_28%,#0B272B_55%,#1E133A_80%,#2A1128_100%)]"
+      className="relative overflow-hidden animate-gradient-pan border-b border-rose-200/80 bg-[linear-gradient(135deg,#FBEADF_0%,#FDF2E9_28%,#F1F7F1_55%,#F6E7ED_80%,#FBF0DC_100%)] dark:border-rose-900/70 dark:bg-[linear-gradient(135deg,#170D14_0%,#241320_28%,#10201A_55%,#2A1220_80%,#331322_100%)]"
     >
       {/* Cohesive Multi-Tone Pastel / Deep Aurora Mesh & Subtle Architectural Dot Grid */}
       <div className="pointer-events-none absolute inset-0" style={HERO_BACKDROP_STYLE}>
         <div
-          className="absolute inset-0 opacity-60 [background-image:radial-gradient(rgba(37,99,235,0.12)_1px,transparent_1px)] [background-size:24px_24px] dark:opacity-35 dark:[background-image:radial-gradient(rgba(125,211,252,0.16)_1px,transparent_1px)]"
+          className="absolute inset-0 opacity-60 [background-image:radial-gradient(rgba(226,80,42,0.12)_1px,transparent_1px)] [background-size:24px_24px] dark:opacity-35 dark:[background-image:radial-gradient(rgba(255,180,150,0.16)_1px,transparent_1px)]"
           aria-hidden="true"
         />
         <div
-          className="absolute -left-24 top-8 h-80 w-80 rounded-full bg-sky-400/25 blur-3xl dark:bg-sky-500/20"
+          className="absolute -left-24 top-8 h-80 w-80 rounded-full bg-orange-400/25 blur-3xl dark:bg-orange-500/20"
           aria-hidden="true"
         />
         <div
-          className="absolute right-12 top-10 h-96 w-96 rounded-full bg-violet-400/20 blur-3xl dark:bg-violet-500/20"
+          className="absolute right-12 top-10 h-96 w-96 rounded-full bg-rose-400/20 blur-3xl dark:bg-rose-500/20"
           aria-hidden="true"
         />
         <div
-          className="absolute bottom-6 left-1/3 h-80 w-80 rounded-full bg-teal-300/25 blur-3xl dark:bg-teal-400/20"
+          className="absolute bottom-6 left-1/3 h-80 w-80 rounded-full bg-emerald-300/25 blur-3xl dark:bg-emerald-400/20"
           aria-hidden="true"
         />
       </div>
@@ -122,14 +118,14 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
       {/* Subtle Animated Orbital Vector Rings */}
       <svg
         aria-hidden="true"
-        className="pointer-events-none absolute -right-12 -top-12 h-[440px] w-[440px] text-[#2563EB]/20 animate-orbit-slow dark:text-sky-400/25"
+        className="pointer-events-none absolute -right-12 -top-12 h-[440px] w-[440px] text-[#E2502A]/20 animate-orbit-slow dark:text-orange-400/25"
         viewBox="0 0 460 460"
         fill="none"
       >
         <circle cx="230" cy="230" r="195" stroke="currentColor" strokeWidth="1.3" strokeDasharray="8 10" />
-        <circle cx="230" cy="230" r="140" stroke="#EC4899" strokeOpacity="0.32" strokeWidth="1.2" />
-        <circle cx="230" cy="35" r="5" fill="#2563EB" fillOpacity="0.65" />
-        <circle cx="370" cy="230" r="4.5" fill="#0D9488" fillOpacity="0.65" />
+        <circle cx="230" cy="230" r="140" stroke="#C08A1E" strokeOpacity="0.32" strokeWidth="1.2" />
+        <circle cx="230" cy="35" r="5" fill="#E2502A" fillOpacity="0.65" />
+        <circle cx="370" cy="230" r="4.5" fill="#15795B" fillOpacity="0.65" />
       </svg>
 
       <div className="relative z-10 mx-auto max-w-[1200px] px-6 pb-10 pt-8 lg:pb-12 lg:pt-12">
@@ -140,12 +136,12 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col justify-between lg:col-span-7"
+            className="flex flex-col lg:col-span-7"
           >
             <div>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <span className="inline-flex items-center gap-2 rounded-full border border-[#2563EB]/25 bg-white/75 px-3 py-1 text-xs font-semibold text-[#1D4ED8] shadow-xs backdrop-blur-sm dark:border-sky-400/30 dark:bg-slate-900/60 dark:text-sky-300">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#0D9488] dark:bg-teal-400" aria-hidden="true" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#E2502A]/25 bg-white/75 px-3 py-1 text-xs font-semibold text-[#B93B18] shadow-xs backdrop-blur-sm dark:border-orange-400/30 dark:bg-slate-900/60 dark:text-orange-300">
+                  <span className="h-1.5 w-1.5 animate-pulse-ring rounded-full bg-[#15795B] dark:bg-emerald-400" aria-hidden="true" />
                   {PROFILE.shortTitle}
                 </span>
                 <span className="text-xs font-semibold tracking-wide text-slate-700 dark:text-slate-300">
@@ -158,31 +154,21 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
                 style={{ textWrap: 'balance' }}
               >
                 Front-end and React Native engineer with{' '}
-                <span className="bg-gradient-to-r from-[#2563EB] via-[#7C3AED] via-[#EC4899] to-[#EA580C] bg-clip-text text-transparent dark:from-sky-400 dark:via-violet-400 dark:via-pink-400 dark:to-amber-400">
+                <span className="bg-gradient-to-r from-[#E2502A] via-[#7B2B52] to-[#C08A1E] bg-clip-text text-transparent dark:from-orange-400 dark:via-rose-400 dark:to-amber-400 text-shimmer">
                   4+ years
                 </span>{' '}
                 building fast, reliable platforms, based in Kerala, India.
               </h1>
 
-              <div className="mt-5 grid grid-cols-1 items-center gap-5 sm:grid-cols-12">
-                <p className="max-w-[54ch] text-[15px] leading-relaxed text-slate-600 sm:col-span-6 sm:text-base dark:text-slate-300">
-                  {PROFILE.bio}
-                </p>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.94 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.55, delay: 0.12 }}
-                  className="mx-auto w-full max-w-[290px] sm:col-span-6"
-                >
-                  <HeroWorkspaceIllustration />
-                </motion.div>
-              </div>
+              <p className="mt-5 max-w-[62ch] text-[15px] leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
+                {PROFILE.bio}
+              </p>
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#0D9488] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-md whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#0B152B]"
+                className="inline-flex items-center gap-2 btn-shine rounded-lg bg-gradient-to-r from-[#E2502A] via-[#8E2F5B] to-[#15795B] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-md whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#170D14]"
               >
                 <span>Explore Selected Works</span>
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -193,16 +179,16 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
                   href={PROFILE.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-[#1D4ED8] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm dark:hover:text-sky-400"
+                  className="inline-flex items-center gap-1.5 transition-colors hover:text-[#B93B18] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:hover:text-orange-400"
                 >
-                  <Linkedin className="h-4 w-4 text-[#2563EB] dark:text-sky-400" aria-hidden="true" />
+                  <Linkedin className="h-4 w-4 text-[#E2502A] dark:text-orange-400" aria-hidden="true" />
                   <span>LinkedIn</span>
                 </a>
                 <a
                   href={PROFILE.githubPrimaryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-[#7C3AED] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm dark:hover:text-violet-400"
+                  className="inline-flex items-center gap-1.5 transition-colors hover:text-[#7B2B52] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:hover:text-rose-400"
                 >
                   <Github className="h-4 w-4 text-slate-900 dark:text-slate-200" aria-hidden="true" />
                   <span>{PROFILE.githubPrimaryHandle}</span>
@@ -218,12 +204,12 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
             transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col lg:col-span-5"
           >
-            <div className="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md dark:border-slate-700/80 dark:bg-[#0F172A]/95 dark:shadow-[0_20px_40px_-15px_rgba(2,6,23,0.7)]">
-              <div className="h-1.5 w-full bg-gradient-to-r from-[#2563EB] via-[#0D9488] to-[#EC4899]" aria-hidden="true" />
+            <div className="flex h-full flex-col justify-between card-sheen overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md dark:border-slate-700/80 dark:bg-[#1A1016]/95 dark:shadow-[0_20px_40px_-15px_rgba(12,6,10,0.7)]">
+              <div className="h-1.5 w-full bg-gradient-to-r from-[#E2502A] via-[#15795B] to-[#C08A1E]" aria-hidden="true" />
               <div className="flex flex-1 flex-col justify-between p-5">
-                <div>
-                  <div className="flex flex-col gap-2.5 pb-3 sm:flex-row sm:items-center sm:justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#0D9488] whitespace-nowrap dark:text-teal-400">
+                <div className="flex flex-1 flex-col">
+                  <div className="flex flex-col gap-2.5 pb-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[#15795B] whitespace-nowrap dark:text-emerald-400">
                       Flagship Systems
                     </span>
                     <div
@@ -240,7 +226,7 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
                             role="tab"
                             aria-selected={isActive}
                             onClick={() => setActiveId(tab.id)}
-                            className={`relative rounded-md px-2 py-1 text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${
+                            className={`relative rounded-md px-2 py-1 text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] ${
                               isActive
                                 ? 'text-white'
                                 : 'text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white'
@@ -250,7 +236,7 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
                               <motion.span
                                 layoutId="hero-flagship-tab"
                                 transition={{ type: 'spring', stiffness: 420, damping: 32 }}
-                                className="absolute inset-0 rounded-md bg-gradient-to-r from-[#2563EB] to-[#4F46E5] shadow-xs"
+                                className="absolute inset-0 rounded-md bg-gradient-to-r from-[#E2502A] to-[#8E2F5B] shadow-xs"
                                 aria-hidden="true"
                               />
                             )}
@@ -268,13 +254,16 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                      className="flex flex-1 flex-col gap-4"
                     >
-                      <ProjectVisual visualType={activeProject.visualType} />
+                      <div className="flex flex-1 flex-col">
+                        <ProjectVisual visualType={activeProject.visualType} className="flex-1" />
+                      </div>
 
-                      <div className="mt-4">
+                      <div>
                         <div className="text-xs text-slate-500 dark:text-slate-400">
                           {activeProject.organization} <span aria-hidden="true">·</span>{' '}
-                          <span className="font-medium text-[#2563EB] dark:text-sky-400">{activeProject.category}</span>{' '}
+                          <span className="font-medium text-[#E2502A] dark:text-orange-400">{activeProject.category}</span>{' '}
                           <span aria-hidden="true">·</span> {activeProject.year}
                         </div>
                         <h2 className="font-display mt-1 text-lg font-semibold text-slate-950 dark:text-white">
@@ -292,7 +281,7 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
                   <button
                     type="button"
                     onClick={() => onSelectProject(activeProject)}
-                    className="text-xs font-semibold text-[#1D4ED8] hover:text-[#4F46E5] hover:underline underline-offset-4 whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm dark:text-sky-400 dark:hover:text-sky-300"
+                    className="text-xs font-semibold text-[#B93B18] hover:text-[#8E2F5B] hover:underline underline-offset-4 whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:text-orange-400 dark:hover:text-orange-300"
                   >
                     Inspect Case Study
                   </button>
@@ -302,7 +291,7 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
                       href={activeProject.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-mono text-xs font-medium text-[#0D9488] hover:text-[#1D4ED8] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm dark:text-teal-400 dark:hover:text-teal-300"
+                      className="inline-flex items-center gap-1 font-mono text-xs font-medium text-[#15795B] hover:text-[#B93B18] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:text-emerald-400 dark:hover:text-emerald-300"
                     >
                       <span>{activeProject.liveLabel}</span>
                       <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
@@ -320,9 +309,9 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mt-8 overflow-hidden rounded-2xl border border-indigo-200/80 bg-white/95 px-6 py-6 shadow-md backdrop-blur-xs lg:px-8 dark:border-slate-700/80 dark:bg-[#0F172A]/95 dark:shadow-[0_18px_36px_-15px_rgba(2,6,23,0.65)]"
+          className="card-sheen relative mt-8 overflow-hidden rounded-2xl border border-rose-200/80 bg-white/95 px-6 py-6 shadow-md backdrop-blur-xs lg:px-8 dark:border-slate-700/80 dark:bg-[#1A1016]/95 dark:shadow-[0_18px_36px_-15px_rgba(12,6,10,0.65)]"
         >
-          <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#2563EB_0%,#0D9488_34%,#EC4899_68%,#EA580C_100%)]" aria-hidden="true" />
+          <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#E2502A_0%,#15795B_34%,#C08A1E_68%,#A9701A_100%)]" aria-hidden="true" />
 
           <div className="relative z-10 grid grid-cols-2 gap-6 lg:grid-cols-4 lg:gap-8">
             {KEY_METRICS.map((metric, idx) => (
@@ -348,21 +337,29 @@ export function HeroSection({ onSelectProject }: HeroSectionProps) {
       </div>
 
       {/* Vibrant Marquee Section Divider */}
-      <div className="relative z-10 overflow-hidden border-t border-slate-200 bg-white py-3 dark:border-indigo-900/60 dark:bg-[#0D1528]">
+      <div className="relative z-10 overflow-hidden border-t border-slate-200 bg-white py-3 dark:border-rose-900/60 dark:bg-[#150C12]">
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-white/0 sm:w-24 dark:from-[#150C12]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-white to-white/0 sm:w-24 dark:from-[#150C12]"
+          aria-hidden="true"
+        />
         <div className="animate-marquee select-none text-xs font-medium tracking-wide text-slate-600 dark:text-slate-300">
           {[0, 1].map((dup) => (
             <div key={dup} className="flex items-center gap-6 px-3">
-              <span className="font-semibold text-[#2563EB] dark:text-sky-400">Akshaya e-Governance</span>
+              <span className="font-semibold text-[#E2502A] dark:text-orange-400">Akshaya e-Governance</span>
               <span aria-hidden="true">·</span>
               <span>React 19 &amp; TypeScript</span>
               <span aria-hidden="true">·</span>
-              <span className="font-semibold text-[#0D9488] dark:text-teal-400">Niyamasabha &amp; Malayalam Mission</span>
+              <span className="font-semibold text-[#15795B] dark:text-emerald-400">Niyamasabha &amp; Malayalam Mission</span>
               <span aria-hidden="true">·</span>
               <span>React Native &amp; Expo</span>
               <span aria-hidden="true">·</span>
-              <span className="font-semibold text-[#7C3AED] dark:text-violet-400">Next.js &amp; Redux Toolkit</span>
+              <span className="font-semibold text-[#7B2B52] dark:text-rose-400">Next.js &amp; Redux Toolkit</span>
               <span aria-hidden="true">·</span>
-              <span className="font-semibold text-[#EA580C] dark:text-amber-400">AI-Accelerated Engineering</span>
+              <span className="font-semibold text-[#A9701A] dark:text-amber-400">AI-Accelerated Engineering</span>
               <span aria-hidden="true">·</span>
             </div>
           ))}

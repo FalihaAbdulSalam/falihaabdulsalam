@@ -59,7 +59,7 @@ export function ScrollProgressBar() {
         data-testid="scroll-progress-bar"
         data-progress="0"
         style={{ scaleX: smoothProgress, transformOrigin: '0% 50%' }}
-        className="h-full w-full bg-[linear-gradient(90deg,#2563EB_0%,#0D9488_28%,#8B5CF6_55%,#EC4899_80%,#F59E0B_100%)] shadow-[0_1px_6px_rgba(37,99,235,0.28)] dark:shadow-[0_1px_8px_rgba(56,189,248,0.45)]"
+        className="h-full w-full bg-[linear-gradient(90deg,#E2502A_0%,#15795B_28%,#A8457A_55%,#C08A1E_80%,#D9A441_100%)] shadow-[0_1px_6px_rgba(226,80,42,0.28)] dark:shadow-[0_1px_8px_rgba(255,138,92,0.45)]"
       />
     </div>
   );

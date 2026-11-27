@@ -5,6 +5,7 @@
 
 import { useEffect, useState } from 'react';
 import { MotionConfig } from 'motion/react';
+import { AmbientEffects } from './components/AmbientEffects';
 import { CapabilitiesAndContact } from './components/CapabilitiesAndContact';
 import { ExperienceSection } from './components/ExperienceSection';
 import { Header } from './components/Header';
@@ -50,8 +51,9 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] transition-colors duration-300 dark:bg-[#090F1E] dark:text-slate-100">
+      <div className="min-h-screen bg-[#FDF8F4] text-[#1A1016] transition-colors duration-300 dark:bg-[#0E080C] dark:text-slate-100">
         <ScrollProgressBar />
+        <AmbientEffects />
         <Header theme={theme} onToggleTheme={handleToggleTheme} />
         <main>
           <HeroSection onSelectProject={setSelectedProject} />
