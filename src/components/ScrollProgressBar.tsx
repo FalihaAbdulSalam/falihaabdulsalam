@@ -52,7 +52,7 @@ export function ScrollProgressBar() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[3px] bg-slate-900/[0.04] dark:bg-white/[0.08]"
+      className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[3px] bg-stone-900/[0.04] dark:bg-white/[0.08]"
     >
       <motion.div
         ref={barRef}

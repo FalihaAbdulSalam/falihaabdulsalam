@@ -82,7 +82,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
       className={`sticky top-0 z-40 transition-all duration-200 ${
         scrolled
           ? 'border-b border-rose-200/80 bg-white/92 shadow-[0_10px_30px_-14px_rgba(226,80,42,0.18)] backdrop-blur-md dark:border-rose-500/30 dark:bg-[#150C12]/90 dark:shadow-[0_10px_30px_-14px_rgba(226,80,42,0.35)]'
-          : 'border-b border-slate-200/80 bg-white/95 backdrop-blur-sm dark:border-slate-800/90 dark:bg-[#150C12]/92'
+          : 'border-b border-stone-200/80 bg-white/95 backdrop-blur-sm dark:border-stone-800/90 dark:bg-[#150C12]/92'
       }`}
     >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-4 py-3 sm:px-6">
@@ -98,7 +98,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
           >
             FAS
           </span>
-          <span className="font-display text-[17px] font-bold tracking-tight text-slate-950 transition-colors group-hover:text-[#B93B18] dark:text-white dark:group-hover:text-orange-400">
+          <span className="font-display text-[17px] font-bold tracking-tight text-stone-950 transition-colors group-hover:text-[#B93B18] dark:text-white dark:group-hover:text-orange-400">
             {PROFILE.name}
           </span>
         </a>
@@ -106,7 +106,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
         {/* Zone 2: Elevated Segmented Desktop Navigation */}
         <nav
           aria-label="Primary navigation"
-          className="hidden lg:flex items-center gap-1 rounded-xl border border-slate-200/85 bg-slate-100/75 p-1 shadow-[inset_0_1px_2px_rgba(26,16,22,0.04)] dark:border-slate-700/80 dark:bg-slate-900/85 dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)]"
+          className="hidden lg:flex items-center gap-1 rounded-xl border border-stone-200/85 bg-stone-100/75 p-1 shadow-[inset_0_1px_2px_rgba(26,16,22,0.04)] dark:border-stone-700/80 dark:bg-stone-900/85 dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)]"
         >
           {NAV_LINKS.map((link) => {
             const isActive = activeId === link.id;
@@ -119,15 +119,15 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
                 aria-current={isActive ? 'location' : undefined}
                 className={`relative inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[13px] font-semibold transition-colors duration-150 whitespace-nowrap shrink-0 xl:px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] ${
                   isActive
-                    ? 'text-slate-950 dark:text-white'
-                    : 'text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white'
+                    ? 'text-stone-950 dark:text-white'
+                    : 'text-stone-600 hover:text-stone-950 dark:text-stone-300 dark:hover:text-white'
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="desktop-nav-active"
                     transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                    className="absolute inset-0 rounded-lg border border-rose-200/80 bg-white shadow-xs dark:border-rose-400/40 dark:bg-slate-800/95"
+                    className="absolute inset-0 rounded-lg border border-rose-200/80 bg-white shadow-xs dark:border-rose-400/40 dark:bg-stone-800/95"
                     aria-hidden="true"
                   >
                     <span className="absolute inset-x-3 bottom-0 h-[2px] rounded-full bg-[linear-gradient(90deg,#E2502A,#7B2B52,#15795B)]" />
@@ -135,7 +135,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
                 )}
                 <Icon
                   className={`relative z-10 hidden h-3.5 w-3.5 lg:block transition-colors ${
-                    isActive ? link.accent : 'text-slate-400 dark:text-slate-400'
+                    isActive ? link.accent : 'text-stone-400 dark:text-stone-400'
                   }`}
                   aria-hidden="true"
                 />
@@ -154,7 +154,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             aria-pressed={isDark}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-slate-200/90 bg-slate-50/90 px-2.5 text-xs font-semibold text-slate-700 shadow-2xs transition-all duration-150 hover:border-rose-300 hover:bg-rose-50/70 hover:text-[#B93B18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] dark:border-slate-700 dark:bg-slate-800/90 dark:text-slate-200 dark:hover:border-orange-400/50 dark:hover:bg-slate-800 dark:hover:text-amber-300"
+            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-stone-200/90 bg-stone-50/90 px-2.5 text-xs font-semibold text-stone-700 shadow-2xs transition-all duration-150 hover:border-rose-300 hover:bg-rose-50/70 hover:text-[#B93B18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] dark:border-stone-700 dark:bg-stone-800/90 dark:text-stone-200 dark:hover:border-orange-400/50 dark:hover:bg-stone-800 dark:hover:text-amber-300"
           >
             <AnimatePresence mode="wait" initial={false}>
               {isDark ? (
@@ -188,7 +188,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             href={PROFILE.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-shine hidden sm:inline-flex items-center gap-2 rounded-xl bg-[linear-gradient(135deg,#E2502A_0%,#8E2F5B_55%,#15795B_100%)] px-4 py-2 text-xs font-semibold text-white shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md hover:shadow-rose-500/20 whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#150C12]"
+            className="btn-shine hidden sm:inline-flex items-center gap-2 rounded-xl bg-[linear-gradient(135deg,#E2502A_0%,#8E2F5B_100%)] px-4 py-2 text-xs font-semibold text-white shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md hover:shadow-rose-500/20 whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#150C12]"
           >
             <ArrowDownToLine className="h-3.5 w-3.5" aria-hidden="true" />
             <span>Resume PDF</span>
@@ -203,7 +203,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             className={`inline-flex h-9 w-9 items-center justify-center rounded-xl border transition-all lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] ${
               mobileOpen
                 ? 'border-rose-300 bg-rose-50 text-[#B93B18] dark:border-rose-500/60 dark:bg-rose-950/70 dark:text-orange-300'
-                : 'border-slate-200 bg-white text-slate-700 hover:border-rose-200 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800/90 dark:text-slate-200 dark:hover:border-slate-600'
+                : 'border-stone-200 bg-white text-stone-700 hover:border-rose-200 hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-800/90 dark:text-stone-200 dark:hover:border-stone-600'
             }`}
           >
             {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -221,9 +221,9 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="border-t border-slate-200/80 bg-gradient-to-b from-slate-50/90 to-white px-4 py-3 shadow-lg lg:hidden dark:border-slate-800 dark:from-[#150C12]/95 dark:to-[#1A1016]/95"
+            className="border-t border-stone-200/80 bg-gradient-to-b from-stone-50/90 to-white px-4 py-3 shadow-lg lg:hidden dark:border-stone-800 dark:from-[#150C12]/95 dark:to-[#1A1016]/95"
           >
-            <div className="overflow-hidden rounded-2xl border border-rose-100 bg-white p-2 shadow-sm dark:border-slate-700/80 dark:bg-[#1A1016]">
+            <div className="overflow-hidden rounded-2xl border border-rose-100 bg-white p-2 shadow-sm dark:border-stone-700/80 dark:bg-[#1A1016]">
               <div className="mb-2 h-1 rounded-full bg-[linear-gradient(90deg,#E2502A,#15795B,#7B2B52,#C08A1E)]" aria-hidden="true" />
               <div className="flex flex-col gap-1">
                 {NAV_LINKS.map((link) => {
@@ -240,27 +240,27 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
                       aria-current={isActive ? 'location' : undefined}
                       className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-colors ${
                         isActive
-                          ? 'bg-rose-50/90 text-slate-950 dark:bg-slate-800/90 dark:text-white'
-                          : 'text-slate-700 hover:bg-slate-50 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800/60 dark:hover:text-white'
+                          ? 'bg-rose-50/90 text-stone-950 dark:bg-stone-800/90 dark:text-white'
+                          : 'text-stone-700 hover:bg-stone-50 hover:text-stone-950 dark:text-stone-300 dark:hover:bg-stone-800/60 dark:hover:text-white'
                       }`}
                     >
                       <span className="flex items-center gap-3">
                         <span
                           className={`flex h-7 w-7 items-center justify-center rounded-lg border ${
                             isActive
-                              ? 'border-rose-200 bg-white shadow-2xs dark:border-rose-500/50 dark:bg-slate-900'
-                              : 'border-slate-200/80 bg-slate-50 dark:border-slate-700 dark:bg-slate-800'
+                              ? 'border-rose-200 bg-white shadow-2xs dark:border-rose-500/50 dark:bg-stone-900'
+                              : 'border-stone-200/80 bg-stone-50 dark:border-stone-700 dark:bg-stone-800'
                           }`}
                         >
                           <Icon
-                            className={`h-3.5 w-3.5 ${isActive ? link.accent : 'text-slate-500 dark:text-slate-400'}`}
+                            className={`h-3.5 w-3.5 ${isActive ? link.accent : 'text-stone-500 dark:text-stone-400'}`}
                             aria-hidden="true"
                           />
                         </span>
                         <span>{link.label}</span>
                       </span>
                       <ChevronRight
-                        className={`h-4 w-4 ${isActive ? 'text-[#E2502A] dark:text-orange-400' : 'text-slate-300 dark:text-slate-600'}`}
+                        className={`h-4 w-4 ${isActive ? 'text-[#E2502A] dark:text-orange-400' : 'text-stone-300 dark:text-stone-600'}`}
                         aria-hidden="true"
                       />
                     </a>
@@ -268,13 +268,13 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
                 })}
               </div>
 
-              <div className="mt-2 border-t border-slate-100 pt-2 dark:border-slate-800">
+              <div className="mt-2 border-t border-stone-100 pt-2 dark:border-stone-800">
                 <a
                   href={PROFILE.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[linear-gradient(135deg,#E2502A_0%,#8E2F5B_55%,#15795B_100%)] px-4 py-2.5 text-sm font-semibold text-white shadow-sm"
+                  className="btn-shine inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[linear-gradient(135deg,#E2502A_0%,#8E2F5B_100%)] px-4 py-2.5 text-sm font-semibold text-white shadow-sm"
                 >
                   <ArrowDownToLine className="h-4 w-4" aria-hidden="true" />
                   <span>Resume PDF</span>

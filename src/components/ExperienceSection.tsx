@@ -6,7 +6,7 @@ import { ExperienceRoadmapVector } from './VectorIllustrations';
 
 const ROLE_STYLES = [
   {
-    text: 'text-[#E2502A] dark:text-orange-400',
+    text: 'text-[#B93B18] dark:text-orange-400',
     bar: 'bg-gradient-to-r from-[#E2502A] to-[#8E2F5B]',
     node: 'bg-[#E2502A] ring-orange-200 dark:bg-orange-400 dark:ring-orange-900/80',
     card: 'bg-white dark:bg-[#1A1016]/95',
@@ -75,7 +75,7 @@ export function ExperienceSection() {
               <span>02. Career &amp; Academic Background</span>
             </p>
             <h2
-              className="font-display mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl dark:text-white"
+              className="font-display mt-3 text-3xl font-bold tracking-tight text-stone-950 sm:text-4xl dark:text-white"
               style={{ textWrap: 'balance' }}
             >
               Where I have designed and shipped production software.
@@ -90,7 +90,7 @@ export function ExperienceSection() {
           {/* Static Track + Scroll-Linked Animated Gradient Beam */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-6 left-3 top-6 hidden w-[2px] rounded-full bg-slate-300/70 md:block dark:bg-slate-700/70"
+            className="pointer-events-none absolute bottom-6 left-3 top-6 hidden w-[2px] rounded-full bg-stone-300/70 md:block dark:bg-stone-700/70"
           >
             <motion.div
               data-testid="experience-timeline-beam"
@@ -117,7 +117,7 @@ export function ExperienceSection() {
                     viewport={{ once: true, amount: 0.12 }}
                     whileHover={{ y: -3, transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] } }}
                     transition={{ duration: 0.52, delay: Math.min((idx % 2) * 0.06, 0.12), ease: [0.16, 1, 0.3, 1] }}
-                    className={`card-sheen overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-700/80 ${style.card} shadow-sm transition-shadow duration-200 hover:shadow-md dark:hover:shadow-[0_16px_32px_-12px_rgba(12,6,10,0.65)]`}
+                    className={`card-sheen overflow-hidden rounded-2xl border border-stone-200/90 dark:border-stone-700/80 ${style.card} shadow-sm transition-shadow duration-200 hover:shadow-md dark:hover:shadow-[0_16px_32px_-12px_rgba(12,6,10,0.65)]`}
                   >
                     <div className={`h-1 w-full ${style.bar}`} aria-hidden="true" />
                     <div className="grid grid-cols-1 gap-6 p-6 lg:grid-cols-12 lg:gap-10 lg:p-7">
@@ -125,18 +125,18 @@ export function ExperienceSection() {
                         <span className={`inline-block rounded-md border px-2.5 py-0.5 font-mono text-xs font-semibold tabular-nums ${style.badge}`}>
                           {exp.period}
                         </span>
-                        <h3 className="font-display mt-2.5 text-lg font-bold text-slate-950 dark:text-white">
+                        <h3 className="font-display mt-2.5 text-lg font-bold text-stone-950 dark:text-white">
                           {exp.company}
                         </h3>
                         <div className={`mt-1 text-sm font-semibold ${style.text}`}>
                           {exp.role}
                         </div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{exp.location}</div>
+                        <div className="mt-1 text-xs text-stone-500 dark:text-stone-400">{exp.location}</div>
                       </div>
 
                       <div className="lg:col-span-8">
-                        <p className="text-sm font-semibold leading-relaxed text-slate-900 dark:text-slate-100">{exp.summary}</p>
-                        <ul className="mt-3 space-y-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                        <p className="text-sm font-semibold leading-relaxed text-stone-900 dark:text-stone-100">{exp.summary}</p>
+                        <ul className="mt-3 space-y-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
                           {exp.achievements.map((item, itemIdx) => (
                             <li key={itemIdx} className="flex gap-3">
                               <span className={`font-mono text-xs pt-1 font-bold tabular-nums ${style.text}`}>
@@ -150,7 +150,7 @@ export function ExperienceSection() {
                           {exp.stack.map((tech) => (
                             <span
                               key={tech}
-                              className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 font-mono text-[11px] font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800/90 dark:text-slate-200"
+                              className="rounded-md border border-stone-200 bg-stone-50 px-2 py-0.5 font-mono text-[11px] font-medium text-stone-700 dark:border-stone-700 dark:bg-stone-800/90 dark:text-stone-200"
                             >
                               {tech}
                             </span>
@@ -176,7 +176,7 @@ export function ExperienceSection() {
                 viewport={{ once: true, amount: 0.12 }}
                 whileHover={{ y: -3, transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] } }}
                 transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
-                className="card-sheen overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md dark:border-slate-700/80 dark:bg-[#1A1016]/95 dark:hover:shadow-[0_16px_32px_-12px_rgba(12,6,10,0.65)]"
+                className="card-sheen overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md dark:border-stone-700/80 dark:bg-[#1A1016]/95 dark:hover:shadow-[0_16px_32px_-12px_rgba(12,6,10,0.65)]"
               >
                 <div className="h-1 w-full bg-gradient-to-r from-[#8E2F5B] via-[#7B2B52] to-[#C08A1E]" aria-hidden="true" />
                 <div className="grid grid-cols-1 gap-6 p-6 lg:grid-cols-12 lg:gap-10 lg:p-7">
@@ -184,15 +184,15 @@ export function ExperienceSection() {
                     <span className="inline-block rounded-md border border-rose-200 bg-rose-100/80 px-2.5 py-0.5 font-mono text-xs font-semibold text-[#6E2647] tabular-nums dark:border-rose-800/80 dark:bg-rose-950/80 dark:text-rose-300">
                       {EDUCATION.period}
                     </span>
-                    <h3 className="font-display mt-2.5 text-lg font-bold text-slate-950 dark:text-white">
+                    <h3 className="font-display mt-2.5 text-lg font-bold text-stone-950 dark:text-white">
                       {EDUCATION.institution}
                     </h3>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{EDUCATION.location}</div>
+                    <div className="mt-1 text-xs text-stone-500 dark:text-stone-400">{EDUCATION.location}</div>
                   </div>
 
                   <div className="lg:col-span-8">
-                    <div className="text-sm font-bold text-slate-950 dark:text-white">{EDUCATION.degree}</div>
-                    <p className="mt-1.5 text-sm leading-relaxed text-slate-700 tabular-nums dark:text-slate-300">
+                    <div className="text-sm font-bold text-stone-950 dark:text-white">{EDUCATION.degree}</div>
+                    <p className="mt-1.5 text-sm leading-relaxed text-stone-700 tabular-nums dark:text-stone-300">
                       Graduated with <span className="font-semibold text-[#6E2647] dark:text-rose-400">{EDUCATION.cgpa}</span> ·
                       Grounded in algorithms, full-stack web engineering, and machine learning.
                     </p>

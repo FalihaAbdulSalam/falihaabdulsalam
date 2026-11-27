@@ -59,15 +59,15 @@ export function HeroWorkspaceIllustration() {
             width="236"
             height="162"
             rx="14"
-            className="fill-white stroke-[#DCCFC7] dark:fill-[#1A1016] dark:stroke-slate-700"
+            className="fill-white stroke-[#DCCFC7] dark:fill-[#1A1016] dark:stroke-stone-700"
             strokeWidth="1.5"
           />
           {/* Browser Chrome Header */}
           <path
             d="M44 46 C44 38.268 50.268 32 58 32 H266 C273.732 32 280 38.268 280 46 V58 H44 V46 Z"
-            className="fill-[url(#archWebBar)] dark:fill-slate-800/95"
+            className="fill-[url(#archWebBar)] dark:fill-stone-800/95"
           />
-          <line x1="44" y1="58" x2="280" y2="58" className="stroke-[#EADFD8] dark:stroke-slate-700" strokeWidth="1.2" />
+          <line x1="44" y1="58" x2="280" y2="58" className="stroke-[#EADFD8] dark:stroke-stone-700" strokeWidth="1.2" />
           <circle cx="60" cy="45" r="3.5" fill="#A96F14" />
           <circle cx="72" cy="45" r="3.5" fill="#D9A441" />
           <circle cx="84" cy="45" r="3.5" fill="#1E8E63" />
@@ -77,7 +77,7 @@ export function HeroWorkspaceIllustration() {
             width="112"
             height="12"
             rx="6"
-            className="fill-white stroke-[#EADFD8] dark:fill-slate-900 dark:stroke-slate-700"
+            className="fill-white stroke-[#EADFD8] dark:fill-stone-900 dark:stroke-stone-700"
             strokeWidth="1"
           />
           <text x="112" y="48" className="fill-[#7A6A64] dark:fill-orange-300" fontFamily="monospace" fontSize="7.5" fontWeight="600">
@@ -91,13 +91,13 @@ export function HeroWorkspaceIllustration() {
             width="54"
             height="110"
             rx="8"
-            className="fill-[#FDF8F4] stroke-[#EADFD8] dark:fill-slate-800/80 dark:stroke-slate-700"
+            className="fill-[#FDF8F4] stroke-[#EADFD8] dark:fill-stone-800/80 dark:stroke-stone-700"
             strokeWidth="1"
           />
           <rect x="64" y="80" width="38" height="6" rx="3" fill="#E2502A" />
-          <rect x="64" y="94" width="32" height="5" rx="2.5" className="fill-[#DCCFC7] dark:fill-slate-600" />
+          <rect x="64" y="94" width="32" height="5" rx="2.5" className="fill-[#DCCFC7] dark:fill-stone-600" />
           <rect x="64" y="106" width="36" height="5" rx="2.5" className="fill-[#C7EBDD] dark:fill-emerald-500/70" />
-          <rect x="64" y="118" width="28" height="5" rx="2.5" className="fill-[#DCCFC7] dark:fill-slate-600" />
+          <rect x="64" y="118" width="28" height="5" rx="2.5" className="fill-[#DCCFC7] dark:fill-stone-600" />
           <rect x="64" y="130" width="34" height="5" rx="2.5" className="fill-[#EED3DE] dark:fill-rose-500/70" />
           {/* Design System Swatch Dots */}
           <circle cx="69" cy="162" r="4" fill="#E2502A" />
@@ -111,12 +111,12 @@ export function HeroWorkspaceIllustration() {
             width="144"
             height="44"
             rx="8"
-            className="fill-[#FDF8F4] stroke-[#EADFD8] dark:fill-slate-800/80 dark:stroke-slate-700"
+            className="fill-[#FDF8F4] stroke-[#EADFD8] dark:fill-stone-800/80 dark:stroke-stone-700"
             strokeWidth="1"
           />
           <rect x="130" y="80" width="84" height="6" rx="3" fill="url(#archAccentLine)" />
-          <rect x="130" y="92" width="114" height="4.5" rx="2.25" className="fill-[#DCCFC7] dark:fill-slate-600" />
-          <rect x="130" y="101" width="76" height="4.5" rx="2.25" className="fill-[#EADFD8] dark:fill-slate-700" />
+          <rect x="130" y="92" width="114" height="4.5" rx="2.25" className="fill-[#DCCFC7] dark:fill-stone-600" />
+          <rect x="130" y="101" width="76" height="4.5" rx="2.25" className="fill-[#EADFD8] dark:fill-stone-700" />
 
           {/* Metrics Sparkline Chart Card */}
           <rect
@@ -125,7 +125,7 @@ export function HeroWorkspaceIllustration() {
             width="88"
             height="58"
             rx="8"
-            className="fill-white stroke-[#FBD9C9] dark:fill-slate-800/90 dark:stroke-orange-700/70"
+            className="fill-white stroke-[#FBD9C9] dark:fill-stone-800/90 dark:stroke-orange-700/70"
             strokeWidth="1.2"
           />
           <text x="129" y="136" className="fill-[#9A2E12] dark:fill-orange-300" fontFamily="monospace" fontSize="8" fontWeight="700">
@@ -157,7 +157,7 @@ export function HeroWorkspaceIllustration() {
             className="fill-[#F1F7F1] stroke-[#C7EBDD] dark:fill-emerald-950/70 dark:stroke-emerald-700/70"
             strokeWidth="1.2"
           />
-          <circle cx="239.5" cy="144" r="10" className="fill-white dark:fill-slate-900" stroke="#15795B" strokeWidth="2" />
+          <circle cx="239.5" cy="144" r="10" className="fill-white dark:fill-stone-900" stroke="#15795B" strokeWidth="2" />
           <motion.path
             d="M235 144 L238.5 147.5 L245 140.5"
             stroke="#2AA37C"
@@ -179,11 +179,11 @@ export function HeroWorkspaceIllustration() {
             width="88"
             height="138"
             rx="16"
-            className="fill-white stroke-[#A9978E] dark:fill-[#1A1016] dark:stroke-slate-600"
+            className="fill-white stroke-[#A9978E] dark:fill-[#1A1016] dark:stroke-stone-600"
             strokeWidth="1.8"
           />
           {/* Phone Notch */}
-          <rect x="276" y="80" width="28" height="4" rx="2" className="fill-[#DCCFC7] dark:fill-slate-700" />
+          <rect x="276" y="80" width="28" height="4" rx="2" className="fill-[#DCCFC7] dark:fill-stone-700" />
           {/* Mobile Screen Header */}
           <rect
             x="256"
@@ -227,13 +227,13 @@ export function HeroWorkspaceIllustration() {
             width="68"
             height="28"
             rx="7"
-            className="fill-[#FDF8F4] stroke-[#EADFD8] dark:fill-slate-800 dark:stroke-slate-700"
+            className="fill-[#FDF8F4] stroke-[#EADFD8] dark:fill-stone-800 dark:stroke-stone-700"
             strokeWidth="1"
           />
           <circle cx="271" cy="182" r="3" fill="#FF8A5C" />
-          <circle cx="290" cy="182" r="3" className="fill-[#DCCFC7] dark:fill-slate-600" />
-          <circle cx="309" cy="182" r="3" className="fill-[#DCCFC7] dark:fill-slate-600" />
-          <text x="263" y="203" className="fill-[#574842] dark:fill-slate-300" fontFamily="monospace" fontSize="7" fontWeight="700">
+          <circle cx="290" cy="182" r="3" className="fill-[#DCCFC7] dark:fill-stone-600" />
+          <circle cx="309" cy="182" r="3" className="fill-[#DCCFC7] dark:fill-stone-600" />
+          <text x="263" y="203" className="fill-[#574842] dark:fill-stone-300" fontFamily="monospace" fontSize="7" fontWeight="700">
             React Native
           </text>
         </g>
@@ -246,11 +246,11 @@ export function HeroWorkspaceIllustration() {
             width="84"
             height="36"
             rx="10"
-            className="fill-white stroke-[#FBD9C9] dark:fill-slate-900 dark:stroke-orange-600/70"
+            className="fill-white stroke-[#FBD9C9] dark:fill-stone-900 dark:stroke-orange-600/70"
             strokeWidth="1.5"
           />
           <circle cx="28" cy="114" r="5" fill="#FF8A5C" fillOpacity="0.25" stroke="#FF8A5C" strokeWidth="1.5" />
-          <text x="38" y="118" className="fill-[#2A1B22] dark:fill-slate-100" fontFamily="monospace" fontSize="9.5" fontWeight="700">
+          <text x="38" y="118" className="fill-[#2A1B22] dark:fill-stone-100" fontFamily="monospace" fontSize="9.5" fontWeight="700">
             &lt;React19 /&gt;
           </text>
         </g>
@@ -263,7 +263,7 @@ export function HeroWorkspaceIllustration() {
             width="94"
             height="32"
             rx="10"
-            className="fill-white stroke-[#C7EBDD] dark:fill-slate-900 dark:stroke-emerald-600/70"
+            className="fill-white stroke-[#C7EBDD] dark:fill-stone-900 dark:stroke-emerald-600/70"
             strokeWidth="1.5"
           />
           <circle cx="280" cy="38" r="3.5" fill="#1E8E63" className="animate-node-breathe" />
@@ -400,7 +400,7 @@ export function ExperienceRoadmapVector() {
           width="332"
           height="104"
           rx="16"
-          className="fill-white/85 stroke-emerald-200/80 dark:fill-[#1A1016]/85 dark:stroke-slate-700/80"
+          className="fill-white/85 stroke-emerald-200/80 dark:fill-[#1A1016]/85 dark:stroke-stone-700/80"
           strokeWidth="1.2"
         />
 
@@ -437,7 +437,7 @@ export function ExperienceRoadmapVector() {
               x={node.cx}
               y={node.cy > 60 ? node.cy + 22 : node.cy - 14}
               textAnchor="middle"
-              className="fill-slate-600 dark:fill-slate-300"
+              className="fill-stone-600 dark:fill-stone-300"
               fontFamily="monospace"
               fontSize="9"
               fontWeight="600"
@@ -479,7 +479,7 @@ export function CapabilitiesArchitectureIllustration() {
           width="456"
           height="120"
           rx="18"
-          className="fill-white/90 stroke-rose-200/80 dark:fill-[#1A1016]/90 dark:stroke-slate-700/80"
+          className="fill-white/90 stroke-rose-200/80 dark:fill-[#1A1016]/90 dark:stroke-stone-700/80"
           strokeWidth="1.2"
         />
 
@@ -561,7 +561,7 @@ export function CapabilitiesArchitectureIllustration() {
             className="fill-amber-50/90 stroke-amber-200 dark:fill-amber-950/70 dark:stroke-amber-700/70"
             strokeWidth="1.2"
           />
-          <circle cx="404" cy="54" r="9" className="fill-white dark:fill-slate-900" stroke="#C08A1E" strokeWidth="2" />
+          <circle cx="404" cy="54" r="9" className="fill-white dark:fill-stone-900" stroke="#C08A1E" strokeWidth="2" />
           <path d="M400 54 L403 57 L409 51" stroke="#C08A1E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           <text x="383" y="83" className="fill-[#96650F] dark:fill-amber-300" fontFamily="monospace" fontSize="9.5" fontWeight="700">
             Ship 10k+
@@ -600,7 +600,7 @@ export function ContactDispatchIllustration() {
           width="376"
           height="116"
           rx="16"
-          className="fill-white/85 stroke-rose-200/80 dark:fill-[#1A1016]/85 dark:stroke-slate-700/80"
+          className="fill-white/85 stroke-rose-200/80 dark:fill-[#1A1016]/85 dark:stroke-stone-700/80"
           strokeWidth="1.2"
         />
 
@@ -620,7 +620,7 @@ export function ContactDispatchIllustration() {
         {/* Origin Node: Kerala Hub */}
         <circle cx="52" cy="88" r="14" fill="#E2502A" fillOpacity="0.14" className="animate-node-breathe" />
         <circle cx="52" cy="88" r="6" fill="#E2502A" stroke="#FFFFFF" strokeWidth="1.8" />
-        <text x="26" y="110" className="fill-slate-600 dark:fill-slate-300" fontFamily="monospace" fontSize="8.5" fontWeight="600">
+        <text x="26" y="110" className="fill-stone-600 dark:fill-stone-300" fontFamily="monospace" fontSize="8.5" fontWeight="600">
           Kerala, IN
         </text>
 
@@ -669,7 +669,7 @@ export function HeroFloatingTechIcons() {
               <div
                 data-testid="floating-3d-react"
                 style={{ transform: 'perspective(520px) rotateX(14deg) rotateY(-16deg) rotate(-6deg)' }}
-                className="relative flex h-13 w-13 items-center justify-center rounded-2xl border border-white/90 bg-gradient-to-br from-white/95 via-[#FDF3EC]/95 to-[#FBEADF]/90 shadow-[0_10px_22px_-6px_rgba(226,80,42,0.28),0_5px_0_0_rgba(147,197,253,0.9),inset_0_1px_1px_rgba(255,255,255,1)] dark:border-orange-400/45 dark:from-slate-800/95 dark:via-[#241320]/95 dark:to-[#4A1E12]/90 dark:shadow-[0_10px_24px_-6px_rgba(255,138,92,0.45),0_5px_0_0_rgba(30,58,138,0.85),inset_0_1px_1px_rgba(255,255,255,0.22)]"
+                className="relative flex h-13 w-13 items-center justify-center rounded-2xl border border-white/90 bg-gradient-to-br from-white/95 via-[#FDF3EC]/95 to-[#FBEADF]/90 shadow-[0_10px_22px_-6px_rgba(226,80,42,0.28),0_5px_0_0_rgba(147,197,253,0.9),inset_0_1px_1px_rgba(255,255,255,1)] dark:border-orange-400/45 dark:from-stone-800/95 dark:via-[#241320]/95 dark:to-[#4A1E12]/90 dark:shadow-[0_10px_24px_-6px_rgba(255,138,92,0.45),0_5px_0_0_rgba(30,58,138,0.85),inset_0_1px_1px_rgba(255,255,255,0.22)]"
               >
                 <svg viewBox="0 0 48 48" className="h-8 w-8" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
@@ -752,7 +752,7 @@ export function HeroFloatingTechIcons() {
               <div
                 data-testid="floating-3d-react-native"
                 style={{ transform: 'perspective(520px) rotateX(12deg) rotateY(-14deg) rotate(6deg)' }}
-                className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-white/90 bg-gradient-to-br from-white/95 via-[#F1F7F1]/95 to-[#E4F3EA]/90 shadow-[0_10px_22px_-6px_rgba(21,121,91,0.26),0_5px_0_0_rgba(94,234,212,0.9),inset_0_1px_1px_rgba(255,255,255,1)] dark:border-emerald-400/45 dark:from-slate-800/95 dark:via-[#10201A]/95 dark:to-[#0E4433]/90 dark:shadow-[0_10px_24px_-6px_rgba(42,163,124,0.45),0_5px_0_0_rgba(17,94,89,0.85),inset_0_1px_1px_rgba(255,255,255,0.22)]"
+                className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-white/90 bg-gradient-to-br from-white/95 via-[#F1F7F1]/95 to-[#E4F3EA]/90 shadow-[0_10px_22px_-6px_rgba(21,121,91,0.26),0_5px_0_0_rgba(94,234,212,0.9),inset_0_1px_1px_rgba(255,255,255,1)] dark:border-emerald-400/45 dark:from-stone-800/95 dark:via-[#10201A]/95 dark:to-[#0E4433]/90 dark:shadow-[0_10px_24px_-6px_rgba(42,163,124,0.45),0_5px_0_0_rgba(17,94,89,0.85),inset_0_1px_1px_rgba(255,255,255,0.22)]"
               >
                 <svg viewBox="0 0 48 48" className="h-9 w-9" fill="none" xmlns="http://www.w3.org/2000/svg">
                   {/* Mobile Device Frame */}
@@ -762,7 +762,7 @@ export function HeroFloatingTechIcons() {
                     width="22"
                     height="38"
                     rx="5"
-                    className="fill-white stroke-[#116248] dark:fill-slate-900 dark:stroke-emerald-400"
+                    className="fill-white stroke-[#116248] dark:fill-stone-900 dark:stroke-emerald-400"
                     strokeWidth="2"
                   />
                   <rect x="20.5" y="8" width="7" height="1.8" rx="0.9" fill="#C7EBDD" />

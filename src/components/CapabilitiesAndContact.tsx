@@ -198,7 +198,7 @@ export function CapabilitiesAndContact() {
                 <span>03. Technical Capabilities</span>
               </p>
               <h2
-                className="font-display mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl dark:text-white"
+                className="font-display mt-3 text-3xl font-bold tracking-tight text-stone-950 sm:text-4xl dark:text-white"
                 style={{ textWrap: 'balance' }}
               >
                 Core stack across frontend architecture, APIs, and AI workflows.
@@ -222,7 +222,7 @@ export function CapabilitiesAndContact() {
                   viewport={{ once: true, amount: 0.15 }}
                   whileHover={{ y: -5, transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] } }}
                   transition={{ duration: 0.52, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  className={`card-sheen group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-700/80 ${style.cardBg} shadow-sm transition-[box-shadow,border-color] duration-200 hover:shadow-lg ${style.hoverBorder}`}
+                  className={`card-sheen group flex flex-col justify-between overflow-hidden rounded-2xl border border-stone-200/90 dark:border-stone-700/80 ${style.cardBg} shadow-sm transition-[box-shadow,border-color] duration-200 hover:shadow-lg ${style.hoverBorder}`}
                 >
                   <div className={`h-1.5 w-full ${style.topBar}`} aria-hidden="true" />
                   <div className="flex flex-1 flex-col justify-between p-6">
@@ -230,15 +230,15 @@ export function CapabilitiesAndContact() {
                       <div className={`inline-flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-200 group-hover:scale-105 ${style.iconBg}`}>
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
-                      <h3 className="font-display mt-4 text-lg font-bold text-slate-950 dark:text-white">
+                      <h3 className="font-display mt-4 text-lg font-bold text-stone-950 dark:text-white">
                         {group.title}
                       </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                      <p className="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-300">
                         {group.description}
                       </p>
                     </div>
 
-                    <ul className="mt-6 grid grid-cols-1 gap-2 border-t border-slate-100 pt-4 text-sm text-slate-800 dark:border-slate-800 dark:text-slate-200">
+                    <ul className="mt-6 grid grid-cols-1 gap-2 border-t border-stone-100 pt-4 text-sm text-stone-800 dark:border-stone-800 dark:text-stone-200">
                       {group.items.map((item) => (
                         <li key={item} className="flex items-center justify-between">
                           <span>{item}</span>
@@ -282,19 +282,19 @@ export function CapabilitiesAndContact() {
                 <span>04. Contact &amp; Availability</span>
               </p>
               <h2
-                className="font-display mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl dark:text-white"
+                className="font-display mt-3 text-3xl font-bold tracking-tight text-stone-950 sm:text-4xl dark:text-white"
                 style={{ textWrap: 'balance' }}
               >
                 Let&apos;s build reliable, fast software together.
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              <p className="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-300">
                 Available for senior Front-End, React 19, Next.js, and React Native engineering
                 roles or specialized platform architecture consulting.
               </p>
 
-              <div className="mt-8 space-y-4 border-t border-slate-200 pt-6 text-sm dark:border-slate-700/80">
+              <div className="mt-8 space-y-4 border-t border-stone-200 pt-6 text-sm dark:border-stone-700/80">
                 <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3 text-slate-800 dark:text-slate-200">
+                  <div className="flex items-center gap-3 text-stone-800 dark:text-stone-200">
                     <Mail className="h-4 w-4 text-[#E2502A] dark:text-orange-400" aria-hidden="true" />
                     <a href={`mailto:${PROFILE.email}`} className="font-medium hover:text-[#E2502A] dark:hover:text-orange-400">
                       {PROFILE.email}
@@ -304,7 +304,7 @@ export function CapabilitiesAndContact() {
                     type="button"
                     onClick={() => handleCopy(PROFILE.email, 'email')}
                     aria-label="Copy email address"
-                    className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:bg-slate-800"
+                    className="inline-flex items-center gap-1 rounded-md border border-stone-200 px-2.5 py-1 text-xs font-medium text-stone-600 hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-900/80 dark:text-stone-300 dark:hover:bg-stone-800"
                   >
                     {copiedField === 'email' ? (
                       <>
@@ -321,7 +321,7 @@ export function CapabilitiesAndContact() {
                 </div>
 
                 <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3 text-slate-800 dark:text-slate-200">
+                  <div className="flex items-center gap-3 text-stone-800 dark:text-stone-200">
                     <Phone className="h-4 w-4 text-[#15795B] dark:text-emerald-400" aria-hidden="true" />
                     <a
                       href={`tel:${PROFILE.phone.replace(/\s+/g, '')}`}
@@ -334,7 +334,7 @@ export function CapabilitiesAndContact() {
                     type="button"
                     onClick={() => handleCopy(PROFILE.phone, 'phone')}
                     aria-label="Copy phone number"
-                    className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:bg-slate-800"
+                    className="inline-flex items-center gap-1 rounded-md border border-stone-200 px-2.5 py-1 text-xs font-medium text-stone-600 hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-900/80 dark:text-stone-300 dark:hover:bg-stone-800"
                   >
                     {copiedField === 'phone' ? (
                       <>
@@ -350,13 +350,13 @@ export function CapabilitiesAndContact() {
                   </button>
                 </div>
 
-                <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                <div className="flex items-center gap-3 text-stone-600 dark:text-stone-300">
                   <MapPin className="h-4 w-4 text-[#C08A1E] dark:text-amber-400" aria-hidden="true" />
                   <span>{PROFILE.location}</span>
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3 border-t border-slate-200 pt-6 dark:border-slate-700/80">
+              <div className="mt-8 flex flex-wrap gap-3 border-t border-stone-200 pt-6 dark:border-stone-700/80">
                 <a
                   href={PROFILE.linkedinUrl}
                   target="_blank"
@@ -391,14 +391,14 @@ export function CapabilitiesAndContact() {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700/80 dark:bg-[#1A1016]/95"
+                className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm dark:border-stone-700/80 dark:bg-[#1A1016]/95"
               >
                 <div className="h-1.5 w-full bg-gradient-to-r from-[#E2502A] via-[#15795B] to-[#A9701A]" aria-hidden="true" />
                 <div className="p-6 sm:p-8">
-                  <h3 className="font-display text-xl font-bold text-slate-950 dark:text-white">Send a Direct Message</h3>
-                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                  <h3 className="font-display text-xl font-bold text-stone-950 dark:text-white">Send a Direct Message</h3>
+                  <p className="mt-1 text-xs text-stone-500 dark:text-stone-400">
                     Messages submitted here are sent directly to{' '}
-                    <span className="font-medium text-slate-700 dark:text-slate-200">{PROFILE.email}</span>.
+                    <span className="font-medium text-stone-700 dark:text-stone-200">{PROFILE.email}</span>.
                   </p>
                   <input
                     type="text"
@@ -413,7 +413,7 @@ export function CapabilitiesAndContact() {
 
                   <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      <label htmlFor="contact-name" className="block text-xs font-semibold text-stone-700 dark:text-stone-300">
                         Your Name
                       </label>
                       <input
@@ -422,7 +422,7 @@ export function CapabilitiesAndContact() {
                         value={formState.name}
                         onChange={(e) => setFormState((prev) => ({ ...prev, name: e.target.value }))}
                         placeholder="Name"
-                        className="mt-1.5 h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+                        className="mt-1.5 h-10 w-full rounded-lg border border-stone-200 bg-white px-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:placeholder:text-stone-500"
                       />
                       {formErrors.name && (
                         <p className="mt-1 text-xs text-red-600 dark:text-red-400" role="alert">
@@ -432,7 +432,7 @@ export function CapabilitiesAndContact() {
                     </div>
 
                     <div>
-                      <label htmlFor="contact-email" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      <label htmlFor="contact-email" className="block text-xs font-semibold text-stone-700 dark:text-stone-300">
                         Email Address
                       </label>
                       <input
@@ -441,7 +441,7 @@ export function CapabilitiesAndContact() {
                         value={formState.email}
                         onChange={(e) => setFormState((prev) => ({ ...prev, email: e.target.value }))}
                         placeholder="you@company.com"
-                        className="mt-1.5 h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+                        className="mt-1.5 h-10 w-full rounded-lg border border-stone-200 bg-white px-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:placeholder:text-stone-500"
                       />
                       {formErrors.email && (
                         <p className="mt-1 text-xs text-red-600 dark:text-red-400" role="alert">
@@ -452,7 +452,7 @@ export function CapabilitiesAndContact() {
                   </div>
 
                   <div className="mt-4">
-                    <label htmlFor="contact-subject" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+                    <label htmlFor="contact-subject" className="block text-xs font-semibold text-stone-700 dark:text-stone-300">
                       Subject
                     </label>
                     <input
@@ -461,7 +461,7 @@ export function CapabilitiesAndContact() {
                       value={formState.subject}
                       onChange={(e) => setFormState((prev) => ({ ...prev, subject: e.target.value }))}
                       placeholder="Senior Front-End Role / React Native Consultation"
-                      className="mt-1.5 h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+                      className="mt-1.5 h-10 w-full rounded-lg border border-stone-200 bg-white px-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:placeholder:text-stone-500"
                     />
                     {formErrors.subject && (
                       <p className="mt-1 text-xs text-red-600 dark:text-red-400" role="alert">
@@ -471,7 +471,7 @@ export function CapabilitiesAndContact() {
                   </div>
 
                   <div className="mt-4">
-                    <label htmlFor="contact-message" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+                    <label htmlFor="contact-message" className="block text-xs font-semibold text-stone-700 dark:text-stone-300">
                       Message
                     </label>
                     <textarea
@@ -480,7 +480,7 @@ export function CapabilitiesAndContact() {
                       value={formState.message}
                       onChange={(e) => setFormState((prev) => ({ ...prev, message: e.target.value }))}
                       placeholder="Share role scope, project timeline, or engineering requirements..."
-                      className="mt-1.5 w-full rounded-lg border border-slate-200 bg-white p-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+                      className="mt-1.5 w-full rounded-lg border border-stone-200 bg-white p-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:placeholder:text-stone-500"
                     />
                     {formErrors.message && (
                       <p className="mt-1 text-xs text-red-600 dark:text-red-400" role="alert">
@@ -584,7 +584,7 @@ export function CapabilitiesAndContact() {
       </section>
 
       {/* Clean Footer */}
-      <footer className="border-t border-slate-200 bg-gradient-to-r from-[#1A1016] via-[#2A1220] to-[#1A1016] py-8 text-slate-300 dark:border-slate-800 dark:from-[#0B0709] dark:via-[#20111F] dark:to-[#0B0709]">
+      <footer className="border-t border-stone-200 bg-gradient-to-r from-[#1A1016] via-[#2A1220] to-[#1A1016] py-8 text-stone-300 dark:border-stone-800 dark:from-[#0B0709] dark:via-[#20111F] dark:to-[#0B0709]">
         <div className="mx-auto flex max-w-[1200px] flex-col items-start justify-between gap-4 px-6 text-xs sm:flex-row sm:items-center">
           <p>
             © {new Date().getFullYear()} {PROFILE.name} <span aria-hidden="true">·</span>{' '}

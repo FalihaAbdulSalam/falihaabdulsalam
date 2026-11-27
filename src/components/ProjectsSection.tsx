@@ -124,23 +124,23 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
               <span>01. Selected Works &amp; Case Studies</span>
             </p>
             <h2
-              className="font-display mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl dark:text-white"
+              className="font-display mt-3 text-3xl font-bold tracking-tight text-stone-950 sm:text-4xl dark:text-white"
               style={{ textWrap: 'balance' }}
             >
               Live portals, mobile apps, and commercial products built for scale.
             </h2>
           </div>
-          <p className="text-sm font-medium text-slate-600 tabular-nums dark:text-slate-300">
+          <p className="text-sm font-medium text-stone-600 tabular-nums dark:text-stone-300">
             Showing {filteredProjects.length} of {PROJECTS.length} documented projects
           </p>
         </motion.div>
 
         {/* Filter Bar: Segmented Category Tabs + Search + Sort */}
-        <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-rose-200/80 bg-white/90 p-3.5 shadow-xs backdrop-blur-xs lg:flex-row lg:items-center lg:justify-between dark:border-slate-700/80 dark:bg-[#1A1016]/90">
+        <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-rose-200/80 bg-white/90 p-3.5 shadow-xs backdrop-blur-xs lg:flex-row lg:items-center lg:justify-between dark:border-stone-700/80 dark:bg-[#1A1016]/90">
           <div
             role="tablist"
             aria-label="Filter projects by domain"
-            className="flex flex-wrap items-center gap-1 rounded-xl bg-slate-100/90 p-1 dark:bg-slate-800/90"
+            className="flex flex-wrap items-center gap-1 rounded-xl bg-stone-100/90 p-1 dark:bg-stone-800/90"
           >
             {FILTER_OPTIONS.map((option) => {
               const isSelected = activeCategory === option;
@@ -154,7 +154,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                   className={`relative rounded-lg px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] ${
                     isSelected
                       ? 'text-white'
-                      : 'text-slate-700 hover:text-[#B93B18] dark:text-slate-300 dark:hover:text-orange-400'
+                      : 'text-stone-700 hover:text-[#B93B18] dark:text-stone-300 dark:hover:text-orange-400'
                   }`}
                 >
                   {isSelected && (
@@ -179,7 +179,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 Search projects by title or technology
               </label>
               <Search
-                className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-slate-500"
+                className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400 dark:text-stone-500"
                 aria-hidden="true"
               />
               <input
@@ -188,14 +188,14 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search Akshaya, React Native..."
-                className="h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-8 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 sm:w-68 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+                className="h-10 w-full rounded-lg border border-stone-200 bg-white pl-9 pr-8 text-sm text-stone-900 placeholder:text-stone-400 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 sm:w-68 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:placeholder:text-stone-500"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
                   aria-label="Clear search query"
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded p-0.5 text-slate-400 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded p-0.5 text-stone-400 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
                 >
                   <X className="h-3.5 w-3.5" />
                 </button>
@@ -210,7 +210,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 id="project-sort"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="h-10 rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                className="h-10 rounded-lg border border-stone-200 bg-white px-3 text-xs font-medium text-stone-700 focus:border-[#E2502A] focus:outline-none focus:ring-2 focus:ring-[#E2502A]/20 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200"
               >
                 <option value="featured">Sort: Featured Impact</option>
                 <option value="alphabetical">Sort: Alphabetical (A–Z)</option>
@@ -221,11 +221,11 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
 
         {/* Project Bento Grid with Card Entrance & Scroll Animations */}
         {filteredProjects.length === 0 ? (
-          <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-12 text-center dark:border-slate-700/80 dark:bg-[#1A1016]/95">
-            <h3 className="font-display text-lg font-semibold text-slate-950 dark:text-white">
+          <div className="mt-10 rounded-2xl border border-stone-200 bg-white p-12 text-center dark:border-stone-700/80 dark:bg-[#1A1016]/95">
+            <h3 className="font-display text-lg font-semibold text-stone-950 dark:text-white">
               No projects match your current filter
             </h3>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            <p className="mt-2 text-sm text-stone-600 dark:text-stone-300">
               Try clearing the search query or switching back to all project categories.
             </p>
             <button
@@ -274,7 +274,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                       delay: Math.min((idx % 2) * 0.07, 0.14),
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className={`card-sheen group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-700/80 ${accent.cardBg} shadow-sm transition-[box-shadow,border-color] duration-200 ${accent.hoverShadow} ${accent.hoverBorder} ${
+                    className={`card-sheen group flex flex-col justify-between overflow-hidden rounded-2xl border border-stone-200/90 dark:border-stone-700/80 ${accent.cardBg} shadow-sm transition-[box-shadow,border-color] duration-200 ${accent.hoverShadow} ${accent.hoverBorder} ${
                       isWide ? 'lg:col-span-2' : ''
                     }`}
                   >
@@ -286,17 +286,17 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                       </div>
 
                       {/* Metadata Row with Tinted Category Tag */}
-                      <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
-                        <span className="font-semibold text-slate-800 dark:text-slate-200">{project.organization}</span>
+                      <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-stone-600 dark:text-stone-400">
+                        <span className="font-semibold text-stone-800 dark:text-stone-200">{project.organization}</span>
                         <span
                           className={`rounded-md border px-2 py-0.5 text-[11px] font-semibold ${accent.badgeBg}`}
                         >
                           {project.category}
                         </span>
-                        <span className="font-mono text-slate-500 tabular-nums dark:text-slate-400">{project.year}</span>
+                        <span className="font-mono text-stone-500 tabular-nums dark:text-stone-400">{project.year}</span>
                       </div>
 
-                      <h3 className="font-display mt-2.5 text-xl font-bold tracking-tight text-slate-950 dark:text-white">
+                      <h3 className="font-display mt-2.5 text-xl font-bold tracking-tight text-stone-950 dark:text-white">
                         {project.title}
                       </h3>
 
@@ -304,7 +304,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                         {project.impactMetric}
                       </p>
 
-                      <p className="mt-2.5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                      <p className="mt-2.5 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
                         {project.summary}
                       </p>
 
@@ -313,7 +313,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                         {project.stack.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-md border border-slate-200/80 bg-white/90 px-2 py-0.5 font-mono text-[11px] font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800/90 dark:text-slate-200"
+                            className="rounded-md border border-stone-200/80 bg-white/90 px-2 py-0.5 font-mono text-[11px] font-medium text-stone-700 dark:border-stone-700 dark:bg-stone-800/90 dark:text-stone-200"
                           >
                             {tech}
                           </span>
@@ -322,12 +322,12 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                     </div>
                   </div>
 
-                  <div className="mx-5 mb-5 mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200/70 pt-4 dark:border-slate-800">
+                  <div className="mx-5 mb-5 mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-stone-200/70 pt-4 dark:border-stone-800">
                     <button
                       type="button"
                       onClick={() => onSelectProject(project)}
                       aria-label={`Read case study for ${project.title}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-950 transition-colors hover:text-[#E2502A] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:text-slate-100 dark:hover:text-orange-400"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-950 transition-colors hover:text-[#B93B18] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:text-stone-100 dark:hover:text-orange-400"
                     >
                       <span>Case Study</span>
                       <ArrowUpRight
@@ -343,7 +343,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`View GitHub repository for ${project.title}`}
-                          className="inline-flex items-center gap-1 text-xs font-medium text-slate-600 hover:text-slate-950 whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:text-slate-300 dark:hover:text-white"
+                          className="inline-flex items-center gap-1 text-xs font-medium text-stone-600 hover:text-stone-950 whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2502A] rounded-sm dark:text-stone-300 dark:hover:text-white"
                         >
                           <Github className="h-3.5 w-3.5" aria-hidden="true" />
                           <span>Source</span>
@@ -371,7 +371,7 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
         )}
 
         {/* Public GitHub Repositories & Additional Infrastructure */}
-        <div className="mt-14 grid grid-cols-1 gap-8 border-t border-slate-200 pt-12 lg:grid-cols-12 dark:border-slate-700/70">
+        <div className="mt-14 grid grid-cols-1 gap-8 border-t border-stone-200 pt-12 lg:grid-cols-12 dark:border-stone-700/70">
           <motion.div
             initial={{ opacity: 0, x: -48 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -379,16 +379,16 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
             transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5"
           >
-            <h3 className="font-display text-xl font-bold tracking-tight text-slate-950 dark:text-white">
+            <h3 className="font-display text-xl font-bold tracking-tight text-stone-950 dark:text-white">
               Public GitHub Repositories &amp; Additional Systems
             </h3>
-            <p className="mt-2.5 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mt-2.5 text-sm leading-relaxed text-stone-600 dark:text-stone-300">
               Public codebases are published on{' '}
               <a
                 href={PROFILE.githubPrimaryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-[#E2502A] hover:underline dark:text-orange-400"
+                className="font-semibold text-[#B93B18] hover:underline dark:text-orange-400"
               >
                 github.com/FalihaAbdulSalam
               </a>
@@ -399,26 +399,26 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
 
             <div className="mt-6 space-y-5">
               {ADDITIONAL_PROJECT_GROUPS.map((group) => (
-                <div key={group.group} className="border-t border-slate-200 pt-4 dark:border-slate-700/70">
+                <div key={group.group} className="border-t border-stone-200 pt-4 dark:border-stone-700/70">
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-[#15795B] dark:text-emerald-400">
                     {group.group}
                   </h4>
                   <ul className="mt-2.5 space-y-2">
                     {group.items.map((item) => (
                       <li key={item.name} className="flex items-baseline justify-between gap-4 text-sm">
-                        <span className="font-medium text-slate-900 dark:text-slate-200">{item.name}</span>
+                        <span className="font-medium text-stone-900 dark:text-stone-200">{item.name}</span>
                         {item.url ? (
                           <a
                             href={item.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 font-mono text-xs text-[#E2502A] hover:underline shrink-0 dark:text-orange-400"
+                            className="inline-flex items-center gap-1 font-mono text-xs text-[#B93B18] hover:underline shrink-0 dark:text-orange-400"
                           >
                             <span>Visit</span>
                             <ExternalLink className="h-3 w-3" aria-hidden="true" />
                           </a>
                         ) : (
-                          <span className="text-xs text-slate-500 dark:text-slate-400">{item.note ?? 'Production'}</span>
+                          <span className="text-xs text-stone-500 dark:text-stone-400">{item.note ?? 'Production'}</span>
                         )}
                       </li>
                     ))}
@@ -435,9 +435,9 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
             transition={{ duration: 0.52, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7"
           >
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700/80 dark:bg-[#1A1016]/95">
+            <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm dark:border-stone-700/80 dark:bg-[#1A1016]/95">
               <div className="h-1.5 w-full bg-gradient-to-r from-[#E2502A] via-[#15795B] to-[#7B2B52]" aria-hidden="true" />
-              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50/70 px-5 py-4 text-slate-900 dark:border-slate-800 dark:bg-slate-800/70 dark:text-white">
+              <div className="flex items-center justify-between border-b border-stone-200 bg-stone-50/70 px-5 py-4 text-stone-900 dark:border-stone-800 dark:bg-stone-800/70 dark:text-white">
                 <span className="text-sm font-bold">
                   Verified Public Repositories
                 </span>
@@ -445,15 +445,15 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                   {PUBLIC_GITHUB_REPOS.length} public repos
                 </span>
               </div>
-              <div className="divide-y divide-slate-100 dark:divide-slate-800">
+              <div className="divide-y divide-stone-100 dark:divide-stone-800">
                 {PUBLIC_GITHUB_REPOS.map((repo) => (
                   <div
                     key={repo.url}
-                    className="flex flex-col justify-between gap-3 px-5 py-4 transition-colors hover:bg-orange-50/40 sm:flex-row sm:items-center dark:hover:bg-slate-800/50"
+                    className="flex flex-col justify-between gap-3 px-5 py-4 transition-colors hover:bg-orange-50/40 sm:flex-row sm:items-center dark:hover:bg-stone-800/50"
                   >
                     <div>
-                      <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                        <span className="font-mono text-slate-700 dark:text-slate-300">{repo.account}</span>
+                      <div className="flex flex-wrap items-center gap-2 text-xs text-stone-500 dark:text-stone-400">
+                        <span className="font-mono text-stone-700 dark:text-stone-300">{repo.account}</span>
                         <span aria-hidden="true">·</span>
                         <span className="font-medium text-[#15795B] dark:text-emerald-400">{repo.language}</span>
                       </div>
@@ -461,12 +461,12 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                         href={repo.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-0.5 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-950 hover:text-[#E2502A] dark:text-white dark:hover:text-orange-400"
+                        className="mt-0.5 inline-flex items-center gap-1.5 text-sm font-semibold text-stone-950 hover:text-[#B93B18] dark:text-white dark:hover:text-orange-400"
                       >
                         <span>{repo.name}</span>
                         <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </a>
-                      <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">{repo.description}</p>
+                      <p className="mt-0.5 text-xs text-stone-600 dark:text-stone-400">{repo.description}</p>
                     </div>
 
                     <div className="flex items-center gap-3 shrink-0">

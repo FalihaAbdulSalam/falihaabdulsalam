@@ -51,7 +51,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className="min-h-screen bg-[#FDF8F4] text-[#1A1016] transition-colors duration-300 dark:bg-[#0E080C] dark:text-slate-100">
+      <div className="min-h-screen bg-[#FDF8F4] text-[#1A1016] transition-colors duration-300 dark:bg-[#0E080C] dark:text-stone-100">
         <ScrollProgressBar />
         <AmbientEffects />
         <Header theme={theme} onToggleTheme={handleToggleTheme} />
